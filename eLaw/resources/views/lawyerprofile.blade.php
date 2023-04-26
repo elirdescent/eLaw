@@ -92,6 +92,15 @@
         </div>
       </div>
     </div>
+    <footer class="relative bg-blueGray-200 pt-8 pb-6 mt-8">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-wrap items-center md:justify-between justify-center">
+      <div class="w-full md:w-6/12 px-4 mx-auto text-center">
+        <h2>Copyright © 2023 - eLaw    </h2>
+      </div>
+    </div>
+  </div>
+</footer>
   </section>
 </main> 
 </body>
