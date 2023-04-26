@@ -49,6 +49,11 @@
                                 </div>
                             </div>
                         </div>
+                         <div class="flex -mx-3">
+                            <div class="w-full px-3 mb-5">
+                                <button class="block w-full max-w-xs mx-auto bg-blue-500 hover:bg-blue-800 ease-in-out duration-300 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold" type="submit">Sign In</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
