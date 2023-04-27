@@ -59,5 +59,61 @@ class ClientController extends Controller
    
 }
 
+public function loginClient(Request $request)
+    {
+        $request->validate([
+            'username'=>'required|regex:/^[a-zA-Z0-9]+$/',
+            'password'=>'required|min:6'
+           ],
+        [
+                'username.regex' => 'The :attribute field may only contain letters and numbers.', 
+                'username.not_regex' => 'The :attribute field may not contain special characters.'
+        ]);
+
+        $client = Client::where('username','=',$request->username)->first();
+
+        if($client)
+        {
+            if(Hash::check($request->password,$client->password))
+            {
+                $request->session()->put('loginId',$client->id);
+                return redirect('userprofile');
+
+            }
+            else
+            {
+                return back()->with('fail','Password is incorrect!');
+            }
+
+        }
+        else
+        {
+            return back()->with('fail','This username is not registered!');
+        }
+
+    }
+
+    public function userProfile()
+    {
+        $data = array();
+        if(Session::has('loginId'))
+        {
+            $data = Client::where('id','=', Session::get('loginId'))->first();
+        }
+        return view("userprofile",compact('data'));
+    }
+
+    public function logout()
+    {
+        if(Session::has('loginId'))
+        {
+            Session::pull('loginId');
+            return redirect('home');
+        }
+
+    }
+
+   
+
     
 }
