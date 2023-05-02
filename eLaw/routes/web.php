@@ -31,3 +31,5 @@ Route::view('/role','role');
 
 Route::get('/registerLawyer',[LawyerController::class,'registerLawyer'])->name('register');
 Route::post('/registerLawyer',[LawyerController::class,'registerLawyer'])->name('registerLawyer');
+
+Route::view('/clientinfo','clientinfo');
