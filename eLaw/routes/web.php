@@ -32,4 +32,17 @@ Route::view('/role','role');
 Route::get('/registerLawyer',[LawyerController::class,'registerLawyer'])->name('register');
 Route::post('/registerLawyer',[LawyerController::class,'registerLawyer'])->name('registerLawyer');
 
+Route::get('/registerClient',[ClientController::class,'registerClient'])->name('regclient');
+Route::post('/registerClient',[ClientController::class,'registerClient'])->name('registerClient');
+
+Route::post('/loginclient',[ClientController::class,'loginClient'])->name('logclient');
+Route::get('/userprofile',[ClientController::class,'userProfile'])->middleware('isLoggedIn');
+
+Route::get('/lawyerprofile',[LawyerController::class,'lawyerProfile'])->middleware('isLoggedIn');
+
+Route::get('/logout',[ClientController::class,'logout']);
+
 Route::view('/clientinfo','clientinfo');
+
+Route::post('/dash',[LawCaseController::class,'addCase'])->name('saveCase');
+Route::get('/dash', [LawCaseController::class, 'show'])->middleware(['isLoggedIn','alreadyLoggedIn']);
