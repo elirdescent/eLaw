@@ -301,68 +301,48 @@
   
               <section x-show="currentSidebarTab == 'messagesTab'" class="px-2 py-2">
                 <h2 class="text-xl">Add a case</h2>
-           <!-- ADD A CASE -->
-                <form class="pt-10" action="{{route('saveCase')}}" method="post">
-                  @csrf
+         <!-- ADD A CASE -->
+         <form class="pt-10"  method="post">
+            @csrf
 
-                  @if(Session::has('success'))
-                  <div class="flex rounded-lg items-center bg-blue-500 text-white text-sm font-bold px-4 py-3" role="alert">
-                      <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.432 0c1.34 0 2.01.912 2.01 1.957 0 1.305-1.164 2.512-2.679 2.512-1.269 0-2.009-.75-1.974-1.99C9.789 1.436 10.67 0 12.432 0zM8.309 20c-1.058 0-1.833-.652-1.093-3.524l1.214-5.092c.211-.814.246-1.141 0-1.141-.317 0-1.689.562-2.502 1.117l-.528-.88c2.572-2.186 5.531-3.467 6.801-3.467 1.057 0 1.233 1.273.705 3.23l-1.391 5.352c-.246.945-.141 1.271.106 1.271.317 0 1.357-.392 2.379-1.207l.6.814C12.098 19.02 9.365 20 8.309 20z"/></svg>
-                      <p>{{Session::get('success')}}</p>
-                    </div>
-                    @endif
-                   
+  
+          
 
-                    @if(Session::has('fail'))
-                    <div class="flex rounded-lg items-center bg-red-500 text-white text-sm font-bold px-4 py-3" role="alert">
-                        <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.432 0c1.34 0 2.01.912 2.01 1.957 0 1.305-1.164 2.512-2.679 2.512-1.269 0-2.009-.75-1.974-1.99C9.789 1.436 10.67 0 12.432 0zM8.309 20c-1.058 0-1.833-.652-1.093-3.524l1.214-5.092c.211-.814.246-1.141 0-1.141-.317 0-1.689.562-2.502 1.117l-.528-.88c2.572-2.186 5.531-3.467 6.801-3.467 1.057 0 1.233 1.273.705 3.23l-1.391 5.352c-.246.945-.141 1.271.106 1.271.317 0 1.357-.392 2.379-1.207l.6.814C12.098 19.02 9.365 20 8.309 20z"/></svg>
-                        <p>{{Session::get('fail')}}.</p>
-                      </div>
-                      @endif
+            <div class="">
+              <h2>Case Title</h2>
+              <input type="text" name="title"  class="input text-blue-300 input-bordered input-teal-500 w-full max-w-xs" />
+            </div>
+            <div class="">
+              <h2>Client Name</h2>
+              <input type="text" name="name"  class="input text-blue-300 input-bordered input-teal-500 w-full max-w-xs" />
+            </div>
+            <div class="">
+              <h2>Client Surname</h2>
+              <input type="text" name="surname"  class="input text-blue-300 input-bordered input-teal-500 w-full max-w-xs" />
+            </div>
+            <div class="">
+              <h2>Case Summary</h2>
+              <input type="text" name="case_summary"  class="input text-blue-300 input-bordered input-teal-500 w-full max-w-xs" />
+            </div>
 
-                          @error('name') 
-                          <div class="bg-red-200 border border-red-400 text-red-700 px-2 py-3 rounded relative" role="alert">
-                            <span class="block sm:inline">{{$message}} </span>
-                          </div>
-                          @enderror
+            <div class="">
+              <h2>Case Description</h2>
+              <textarea type="text" name="case_description"  class="align-center input text-blue-300 input-bordered input-teal-500 w-full max-w-xs" ></textarea>
+            </div>
 
+            <div class="">
+              <h2>Case Progress</h2>
+              <input type="number" name="case_progress" min="0" max="100"    class="align-center input text-blue-300 input-bordered input-teal-500 w-full max-w-xs"  />
+              <div class="w-full flex justify-between text-xs px-2">
+              </div>
                 
+            <div class="pt-2">
+              <button class="btn border-none bg-teal-400 text-black hover:bg-blue-400 duration-300 hover:shadow-l" type="submit">Add Case</button>
+            </div>
+        
 
-                  <div class="">
-                    <h2>Case Title</h2>
-                    <input type="text" name="title"  class="input text-blue-300 input-bordered input-teal-500 w-full max-w-xs" />
-                  </div>
-                  <div class="">
-                    <h2>Client Name</h2>
-                    <input type="text" name="name"  class="input text-blue-300 input-bordered input-teal-500 w-full max-w-xs" />
-                  </div>
-                  <div class="">
-                    <h2>Client Surname</h2>
-                    <input type="text" name="surname"  class="input text-blue-300 input-bordered input-teal-500 w-full max-w-xs" />
-                  </div>
-                  <div class="">
-                    <h2>Case Summary</h2>
-                    <input type="text" name="case_summary"  class="input text-blue-300 input-bordered input-teal-500 w-full max-w-xs" />
-                  </div>
-
-                  <div class="">
-                    <h2>Case Description</h2>
-                    <textarea type="text" name="case_description"  class="align-center input text-blue-300 input-bordered input-teal-500 w-full max-w-xs" ></textarea>
-                  </div>
-
-                  <div class="">
-                    <h2>Case Progress</h2>
-                    <input type="number" name="case_progress" min="0" max="100"    class="align-center input text-blue-300 input-bordered input-teal-500 w-full max-w-xs"  />
-                    <div class="w-full flex justify-between text-xs px-2">
-                    </div>
-                      
-                  <div class="pt-2">
-                    <button class="btn border-none bg-teal-400 text-black hover:bg-blue-400 duration-300 hover:shadow-l" type="submit">Add Case</button>
-                  </div>
-              
- 
-                </form>
-           <!-- ADD A CASE -->
+          </form>
+     <!-- ADD A CASE -->
               </section>
   
               <section x-show="currentSidebarTab == 'notificationsTab'" class="px-4 py-6">
