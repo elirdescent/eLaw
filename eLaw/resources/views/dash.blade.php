@@ -484,12 +484,53 @@
                 
                   
                   <section class="text-neutral-700 text-neutral-300">
+                    <!--Case-->
+                    <div class="grid lg:ml-10 gap-6 text-center md:grid-cols-3">
+                        @foreach ($lawcase as $case)
+
+                        <!--Case-->
+                        
+                          <div>
+                            <div
+                              class="block rounded-lg text-white  shadow-lg bg-neutral-700 shadow-black/30">
+                              <div class=" overflow-hidden rounded-t-lg bg-neutral-700">
+                                <h4 class="mb-4 mt-5 text-2xl font-semibold"> {{$case['title']}} </h4> 
+                                           <div class="p-none m-none h-30 radial-progress bg-blue-200 text-teal-700 border-4 border-blue-200" style="--value:{{$case['case_progress']}};">{{$case['case_progress']}} %</div>
+                                
+                              </div>
+                   
+                              <div
+                                class="m overflow-hidden rounded-full   ">
+                      
+                               
+                              </div>
+                              <div class="p-6">
+                                <h4 class="mb-4 text-2xl font-semibold">{{$case['name']}} {{$case['surname']}}</h4>
+                                <hr />
+                                <p class="justify-center mt-4 ">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="currentColor"
+                                    class="inline-block h-7 w-7 pr-2"
+                                    viewBox="0 0 24 24">
+                                  </svg>
+                               {{$case['case_summary']}}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+  
+  
+                      <!-- Case-->
+  
+                            
+                        @endforeach
                     
                    
                     
                     
 
-                      </div>
+                   
 
 
                       
