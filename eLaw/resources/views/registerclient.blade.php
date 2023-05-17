@@ -4,24 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-   
-    
-    
-    
-@vite('resources/css/app.css')
-    
+    <title>Register Client</title>   
+@vite('resources/css/app.css')  
 </head>
 
 <body>
-    
-
      <!--NAVBAR-->
-    
     
      <nav class="relative px-4 py-4 flex justify-between items-center bg-gray-700 transition duration-300 ease-in-out">
         <a class="text-3xl font-bold leading-none" href="#">
-           <img src="{{URL('images/elaw.png')}}" class="h-10 " alt="">
+           <img src="{{URL('images/elaw.png')}}" class="h-10 " alt=""> 
         </a>
         <div class="lg:hidden">
             <button class="navbar-burger flex items-center text-blue-600 p-3 ">
@@ -31,33 +23,7 @@
                 </svg>
             </button>
         </div>
-        <ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6 transition duration-300 ease-in-out">
-            <li><a class="text-sm text-gray-400 hover:text-gray-500" href="#">Home</a></li>
-            <li class="text-gray-300">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                </svg>
-            </li>
-            <li><a class="text-sm text-gray-400 hover:text-gray-500 " href="#">About Us</a></li>
-            <li class="text-gray-300">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                </svg>
-            </li>
-            <li><a class="text-sm text-gray-400 hover:text-gray-500" href="#">Services</a></li>
-            <li class="text-gray-300">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                </svg>
-            </li>
-            <li><a class="text-sm text-gray-400 hover:text-gray-500" href="#">Pricing</a></li>
-            <li class="text-gray-300">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                </svg>
-            </li>
-            <li><a class="text-sm text-gray-400 hover:text-gray-500" href="#">Contact</a></li>
-        </ul>
+     
         <a class="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold  rounded-xl transition duration-200" href="#">Sign In</a>
         <a class="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200" href="#">Sign up</a>
     </nav>
@@ -159,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <form action="{{route('registerClient')}}" method="post">
         @csrf
-    <div class="min-w-screen min-h-screen bg-gray-900 flex items-center justify-center pb-20 px-5 py-5">
+    <div class="min-w-screen min-h-screen  flex items-center justify-center pb-20 px-5 py-5">
         <div class="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden" style="max-width:1000px">
             <div class="md:flex w-full">
                 <div class="hidden md:block w-1/2 flex justify-center pt-40 pl-10 ">
