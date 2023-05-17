@@ -9,8 +9,6 @@
 </head>
 <body>
     <!--NAVBAR-->
-    
-    
         <nav class="relative px-4 py-4 flex justify-between items-center bg-gray-700 transition duration-300 ease-in-out">
             <a class="text-3xl font-bold leading-none" href="#">
                <img src="{{URL('images/elaw.png')}}" class="h-10 " alt="">
@@ -26,8 +24,7 @@
                     </svg>
                 </button>
             </div>
-            <ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6 transition duration-300 ease-in-out">
-                
+            <ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6 transition duration-300 ease-in-out">    
             </ul>
             <a href="{{URL('loginrole')}}"class="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold  rounded-xl transition duration-200" >Sign In</a>
             <a href="{{URL('role')}}" class="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200" >Sign up</a>
@@ -77,9 +74,7 @@
                 </div>
             </nav>
         </div>
-
     </div>
-    
     <script>
     // Burger menus
     document.addEventListener('DOMContentLoaded', function() {
@@ -127,11 +122,7 @@
 
       <!--CARD-->
       <div class="firstrow flex flex-row  pt-10 ">  
-         
-
-      <div class="container mx-auto  justify-content-start">
-
-        
+      <div class="container mx-auto  justify-content-start"> 
         <div class="relative px-4 mx-auto max-w-7xl sm:px-6 lg:px-8" style="cursor: auto;">
           <div class="max-w-lg mx-auto overflow-hidden rounded-lg shadow-lg lg:max-w-none lg:flex">
             <div class="flex-1 px-6 py-8 bg-blue-200 lg:p-12" style="cursor: auto;">
@@ -192,8 +183,6 @@
                     <p class="ml-3 text-sm text-gray-700">Email support</p>
                   </li>
                 </ul>
-
-
                 <div class="stats mt-20 ">
                     <div class="stats stats-vertical lg:stats-horizontal bg-blue-200 text-gray-800 border-none ">
   
@@ -213,17 +202,11 @@
                           <div class="stat-title text-gray-800">New Registers</div>
                           <div class="stat-value">1,200</div>
                           <div class="stat-desc text-gray-800">↘︎ 90 (14%)</div>
-                        </div>
-                        
+                        </div>   
                       </div>
                 </div>
-
-
               </div>
             </div>
-
-           
-            
             <div class="px-6 py-8 text-center bg-gray-100 lg:flex-shrink-0 lg:flex lg:flex-col lg:justify-center lg:p-12" style="cursor: auto;">
                 <div class="joinus mt-20">
                     <img src="{{URL('images/lawyers.png')}}" alt="lawyers" class=" h-64 mx-auto">
@@ -241,21 +224,16 @@
                       <span class="font-bold">lifetime</span> plan
                     </a>
                   </div></div>
-              
-              
             </div>
           </div>
         </div>
         </div>
         </div>
-    
-   
     </div>
     <!--CARD-->
 
 
      <!--REVIEWS-->
-
     <div class="reviews mt-20 mb-20 ml-10 mr-10">
         <section class="text-neutral-700 dark:text-neutral-300">
             <div class="mx-auto text-center md:max-w-4xl lg:max-w-6xl">
@@ -266,7 +244,6 @@
                 totam voluptas nostrum quisquam eum porro a pariatur veniam.
               </p>
             </div>
-          
             <!--First Testimonial-->
             <div class="grid gap-6 text-center md:grid-cols-3">
               <div>
@@ -296,7 +273,6 @@
                   </div>
                 </div>
               </div>
-          
               <!--Second Testimonial-->
               <div>
                 <div
@@ -325,7 +301,6 @@
                   </div>
                 </div>
               </div>
-          
               <!--Third Testimonial-->
               <div>
                 <div
@@ -356,47 +331,15 @@
               </div>
             </div>
           </section>
-    
     </div>
-
       <!--REVIEWS-->
 
     <!--FOOTER-->
-    <footer class="footer p-10 bg-gray-700 text-base-content ">
-        <div>
-            <img src="{{URL('images/elaw.png')}}" class="h-20 pl-6 " alt="">
-            <img src="{{URL('images/legalboxteal.png')}}" class="h-10 " alt="">
-        </div> 
-        
-        <div>
-          <span class="footer-title">Services</span> 
-          <a class="link link-hover">Branding</a> 
-          <a class="link link-hover">Design</a> 
-          <a class="link link-hover">Marketing</a> 
-          <a class="link link-hover">Advertisement</a>
-        </div> 
-        <div>
-          <span class="footer-title">Company</span> 
-          <a class="link link-hover">About us</a> 
-          <a class="link link-hover">Contact</a> 
-          <a class="link link-hover">Jobs</a> 
-          <a class="link link-hover">Press kit</a>
-        </div> 
-        <div>
-          <span class="footer-title">Legal</span> 
-          <a class="link link-hover">Terms of use</a> 
-          <a class="link link-hover">Privacy policy</a> 
-          <a class="link link-hover">Cookie policy</a>
-        </div>
-      </footer>
-
-      <!--FOOTER-->
-      
-
-
-   
-
-  
-    
+   <footer class="footer footer-center p-4 bg-base-300 text-base-content">
+  <div>
+    <p>Copyright © 2023 - All right reserved LegalBox</p>
+  </div>
+</footer>
+      <!--FOOTER-->   
 </body>
 </html>
