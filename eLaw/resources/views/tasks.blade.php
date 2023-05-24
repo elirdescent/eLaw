@@ -6,7 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     @vite('resources/css/app.css')
+    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
 </head>
+
+
+
 <body>
     <div x-data="setup()" x-init="$refs.loading.classList.add('hidden');" @resize.window="watchScreen()">
         <div class="flex p-0 m-0 antialiased text-gray-900 " >
@@ -92,7 +96,7 @@
 
                   
   
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Settings</a>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Create/Update Profile</a>
   
                   <a href="logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Sign out</a>
                 </div>
@@ -154,28 +158,7 @@
                  
                 </button>
                 <!-- Notifications button -->
-                <button
-                  @click="(isSidebarOpen && currentSidebarTab == 'notificationsTab') ? isSidebarOpen = false : isSidebarOpen = true; currentSidebarTab = 'notificationsTab'"
-                  class="p-2 transition-colors bg-neutral-800 rounded-lg shadow-md  hover:text-blue-300  focus:outline-none focus:ring focus:ring-blue-300 focus:ring-offset-white focus:ring-offset-2"
-                  :class="(isSidebarOpen && currentSidebarTab == 'notificationsTab') ? 'text-white bg-indigo-600' : 'text-gray-500 '"
-                >
-                  <span class="sr-only">Toggle case adding panel</span>
-                  <svg
-                    aria-hidden="true"
-                    class="w-6 h-6"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-                    />
-                  </svg>
-                </button>
+                
               </div>
   
               <!-- User avatar -->
@@ -202,11 +185,11 @@
                   aria-orientation="vertical"
                   aria-label="user menu"
                 >
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"
+                  <a href="{{route('userprofile')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"
                     >Your Profile</a
                   >
   
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Settings</a>
+                  <a href="{{route('lawyerup')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Create/Update Profile</a>
   
                   <a href="logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Sign out</a>
                 </div>
@@ -250,27 +233,14 @@
   
                 <!-- Links -->
                 <div class="flex-1 px-4 space-y-2 overflow-hidden hover:overflow-auto">
-                  <a href="#" class="flex items-center w-full space-x-2 text-white bg-blue-300 rounded-lg">
-                    <span aria-hidden="true" class="p-2 bg-blue-300 rounded-lg">
-                      <svg
-                        class="w-6 h-6"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                        />
-                      </svg>
+                  <a href="{{route('lawyercases')}}" class="flex items-center w-full space-x-2 text-blue-800 hover:bg-blue-300 transition duration-300 ease-in-out rounded-lg">
+                    <span aria-hidden="true" class="p-2  rounded-lg">
+                   <i class="ml-1 fas fa-box"></i>
                     </span>
-                    <span>Home</span>
+                    <span>Cases</span>
                   </a>
                   <a
-                    href="#"
+                    href="{{route('lawyertasks')}}"
                     class="flex items-center space-x-2 text-blue-800 transition-colors rounded-lg group hover:bg-blue-300 hover:text-white"
                   >
                     <span
@@ -292,7 +262,7 @@
                         />
                       </svg>
                     </span>
-                    <span>Pages</span>
+                    <span>Tasks</span>
                   </a>
                 </div>
   
@@ -300,12 +270,32 @@
               </nav>
   
               <section x-show="currentSidebarTab == 'messagesTab'" class="px-2 py-2">
-                <h2 class="text-xl">Add a case</h2>
+                <h2 class="text-xl">Add a task</h2>
            <!-- ADD A CASE -->
-                <form class="pt-10" action="" method="post">
+                <form class="pt-10" action="{{route('saveTask')}}" method="post">
                   @csrf
 
-              
+                  @if(Session::has('success'))
+                  <div class="flex rounded-lg items-center bg-blue-500 text-white text-sm font-bold px-4 py-3" role="alert">
+                      <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.432 0c1.34 0 2.01.912 2.01 1.957 0 1.305-1.164 2.512-2.679 2.512-1.269 0-2.009-.75-1.974-1.99C9.789 1.436 10.67 0 12.432 0zM8.309 20c-1.058 0-1.833-.652-1.093-3.524l1.214-5.092c.211-.814.246-1.141 0-1.141-.317 0-1.689.562-2.502 1.117l-.528-.88c2.572-2.186 5.531-3.467 6.801-3.467 1.057 0 1.233 1.273.705 3.23l-1.391 5.352c-.246.945-.141 1.271.106 1.271.317 0 1.357-.392 2.379-1.207l.6.814C12.098 19.02 9.365 20 8.309 20z"/></svg>
+                      <p>{{Session::get('success')}}</p>
+                    </div>
+                    @endif
+                   
+
+                    @if(Session::has('fail'))
+                    <div class="flex rounded-lg items-center bg-red-500 text-white text-sm font-bold px-4 py-3" role="alert">
+                        <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.432 0c1.34 0 2.01.912 2.01 1.957 0 1.305-1.164 2.512-2.679 2.512-1.269 0-2.009-.75-1.974-1.99C9.789 1.436 10.67 0 12.432 0zM8.309 20c-1.058 0-1.833-.652-1.093-3.524l1.214-5.092c.211-.814.246-1.141 0-1.141-.317 0-1.689.562-2.502 1.117l-.528-.88c2.572-2.186 5.531-3.467 6.801-3.467 1.057 0 1.233 1.273.705 3.23l-1.391 5.352c-.246.945-.141 1.271.106 1.271.317 0 1.357-.392 2.379-1.207l.6.814C12.098 19.02 9.365 20 8.309 20z"/></svg>
+                        <p>{{Session::get('fail')}}.</p>
+                      </div>
+                      @endif
+
+                          @error('name') 
+                          <div class="bg-red-200 border border-red-400 text-red-700 px-2 py-3 rounded relative" role="alert">
+                            <span class="block sm:inline">{{$message}} </span>
+                          </div>
+                          @enderror
+
                 
 
                   <div class="">
@@ -321,19 +311,19 @@
                     <input type="text" name="surname"  class="input text-blue-300 input-bordered input-teal-500 w-full max-w-xs" />
                   </div>
                   <div class="">
-                    <h2>Task Duties</h2>
-                    <input type="text" name="task_duties"  class="input text-blue-300 input-bordered input-teal-500 w-full max-w-xs" />
+                    <h2>Task Description</h2>
+                    <input type="text" name="task_description"  class="input text-blue-300 input-bordered input-teal-500 w-full max-w-xs" />
                   </div>
 
-                 
                   <div class="">
                     <h2>Task Progress</h2>
-                    <input type="number" name="task_" min="0" max="100"    class="align-center input text-blue-300 input-bordered input-teal-500 w-full max-w-xs"  />
-                    <div class="w-full flex justify-between text-xs px-2">
-                    </div>
+                    <input type="number" name="case_progress" min="0" max="100"    class="align-center input text-blue-300 input-bordered input-teal-500 w-full max-w-xs"  />
+                  </div>
+
+              
                       
                   <div class="pt-2">
-                    <button class="btn border-none bg-teal-400 text-black hover:bg-blue-400 duration-300 hover:shadow-l" type="submit">Add Case</button>
+                    <button class="btn border-none bg-teal-400 text-black hover:bg-blue-400 duration-300 hover:shadow-l" type="submit">Add Task</button>
                   </div>
               
  
@@ -394,7 +384,7 @@
                   @click="isSettingsPanelOpen = true; isSubHeaderOpen = false"
                   class="p-2 text-gray-400 bg-blue-200 rounded-lg shadow-md hover:text-gray-600 focus:outline-none focus:ring focus:ring-white focus:ring-offset-gray-100 focus:ring-offset-4"
                 >
-                  <span class="sr-only">Settings</span>
+                  <span class="sr-only">Create/Update Profile</span>
                   <svg
                     aria-hidden="true"
                     class="w-6 h-6"
@@ -472,11 +462,35 @@
                 
                 
                 
+                
+                
                
                 <div class="reviews  mb-20 ml-10 mr-10">
+
+                  @if(Session::has('success'))
+                  <div class="flex items-center justify-center pl-10 pb-5">
+                    <div class="flex alert shadow-lg ">
+                      <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="text-white stroke-info flex-shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span class="text-white">{{Session::get('success')}}.</span>
+                      </div>
+                  </div>
+                  </div>
+                    @endif
+
+                    @if(Session::has('fail'))
+                    <div class="flex items-center justify-center pl-10 pb-5">
+                      <div class="flex alert shadow-lg ">
+                        <div>
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="text-white stroke-info flex-shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                          <span class="text-white">{{Session::get('fail')}}</span>
+                        </div>
+                    </div>
+                    </div>
+                      @endif
                   
                   <h1 class="mb-4 ml-10 text-6xl font-extrabold text-gray-900 text-white md:text-5xl lg:text-6xl"><span class="text-transparent bg-clip-text bg-gradient-to-r to-red-600 from-sky-400">Tasks</span></h1>
-
+              
                 
                   
                   <section class="text-neutral-700 text-neutral-300">
@@ -485,97 +499,59 @@
                     
                      
                       <div class="grid lg:ml-10 gap-6 text-center md:grid-cols-3">
-                    
-
-                        <!--Case-->
-                        
-                          <div>
-                            <div
-                              class="block rounded-lg text-white  shadow-lg bg-neutral-700 shadow-black/30">
-                              <div class=" overflow-hidden rounded-t-lg bg-neutral-700">
-                                <h4 class="mb-4 mt-5 text-2xl font-semibold"> Task Name </h4> 
-                                           <div class="p-none m-none h-30 radial-progress bg-blue-200 text-teal-700 border-4 border-blue-200" style="--value:30;">30 %</div>
-                                
-                              </div>
-                   
-                              <div
-                                class="m overflow-hidden rounded-full   ">
-                      
-                               
-                              </div>
-                              <div class="p-6">
-                                <h4 class="mb-4 text-l font-semibold">Assigned to: </h4> <h4 class="mb-4 text-2xl font-semibold"> John Smith</h4>
-                                <hr />
-                                <p class="justify-center mt-4 ">
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="currentColor"
-                                    class="inline-block h-7 w-7 pr-2"
-                                    viewBox="0 0 24 24">
-                                  </svg>
-                            These are the task details. Do this, do that, etc.
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-  
-  
-                      <!-- Case-->
-
-
-                        <!--Case-->
-                        
+              
+                        @foreach($lawyertask as $task )
+              
                         <div>
+                          <div
+                            class="block rounded-lg text-white  shadow-lg bg-neutral-700 shadow-black/30">
+                            <div class=" overflow-hidden rounded-t-lg bg-neutral-700">
+                              <h4 class="mb-4 mt-5 text-2xl font-semibold"> {{$task['title']}} </h4> 
+                                         <div class="p-none m-none h-30 radial-progress bg-blue-200 text-teal-700 border-4 border-blue-200" style="--value:{{$task['case_progress']}};">{{$task['case_progress']}} %</div>
+                              
+                            </div>
+                 
                             <div
-                              class="block rounded-lg text-white  shadow-lg bg-neutral-700 shadow-black/30">
-                              <div class=" overflow-hidden rounded-t-lg bg-neutral-700">
-                                <h4 class="mb-4 mt-5 text-2xl font-semibold"> Task Name </h4> 
-                                           <div class="p-none m-none h-30 radial-progress bg-blue-200 text-teal-700 border-4 border-blue-200" style="--value:30;">30 %</div>
-                                
-                              </div>
-                   
-                              <div
-                                class="m overflow-hidden rounded-full   ">
-                      
-                               
-                              </div>
-                              <div class="p-6">
-                                <h4 class="mb-4 text-l font-semibold">Assigned to: </h4> <h4 class="mb-4 text-2xl font-semibold"> John Smith</h4>
-                                <hr />
-                                <p class="justify-center mt-4 ">
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="currentColor"
-                                    class="inline-block h-7 w-7 pr-2"
-                                    viewBox="0 0 24 24">
-                                  </svg>
-                            These are the task details. Do this, do that, etc.
-                                </p>
-                              </div>
+                              class="m overflow-hidden rounded-full   ">
+                    
+                             
+                            </div>
+                            <div class="p-6">
+                              <h4 class="mb-4 text-l font-semibold">Assigned to: </h4> <h4 class="mb-4 text-2xl font-semibold">{{$task['name']}} {{$task['surname']}}</h4>
+                              <hr />
+                              <p class="justify-center mt-4 ">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  fill="currentColor"
+                                  class="inline-block h-7 w-7 pr-2"
+                                  viewBox="0 0 24 24">
+                                </svg>
+                          {{$task['task_description']}}
+                              </p>
                             </div>
                           </div>
-  
-  
-                      <!-- Case-->
-  
+                        </div>
+              
+              
+              
+                        @endforeach
+                    
+              
+                        
                             
-        
-
+              
+              
                       </div>
-
-
+              
+              
                       
-
-
+              
+              
                 
                 </div>
                 
                  
                 
-                     
-
-                
-                      
               </main>
 
               
@@ -605,7 +581,7 @@
           class="fixed inset-y-0 right-0 w-64 bg-white border-l border-indigo-100 rounded-l-3xl"
         >
           <div class="px-4 py-8">
-            <h2 class="text-lg font-semibold">Settings</h2>
+            <h2 class="text-lg font-semibold">Create/Update Profile</h2>
           </div>
         </section>
   
