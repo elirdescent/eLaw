@@ -499,6 +499,65 @@
             <div class="flex flex-2  ">
               <!-- Main -->
               <main class="flex items-start justify-center flex-1 px-4  py-0  ">
+                <div class="overflow-x-auto">
+                    <table class="table table-zebra w-full text-blue-300 ">
+                      <!-- head -->
+                      <thead>
+                        <tr>
+                          <th></th>
+                          <th>Name</th>
+                          <th>Surname</th>
+                          <th>Username</th>
+                          <th>Email</th>
+                          <th>Job</th>
+                          <th>Delete</th>
+                        </tr>
+                      </thead>
+                      <tbody class="">
+                        <!-- row 1 -->
+                        <tr class="">
+                          <th>1</th>
+                          <td>Cy Ganderton</td>
+                          <td>Quality Control Specialist</td>
+                          <td>Blue</td>
+                          <td>Pasul</td>
+                          <td>Pasul</td>
+                          <td>Pasul</td>
+                        </tr>
+                        <!-- row 2 -->
+                        <tr >
+                          <th>2</th>
+                          <td>Hart Hagerty</td>
+                          <td>Desktop Support Technician</td>
+                          <td>Purple</td>
+                          <td>Pasul</td>
+                          <td>Pasul</td>
+                          <td>Pasul</td>
+                        </tr>
+                        <!-- row 3 -->
+                        <tr>
+                          <th>3</th>
+                          <td>Brice Swyre</td>
+                          <td>Tax Accountant</td>
+                          <td>Red</td>
+                          <td>Pasul</td>
+                          <td>Pasul</td>
+                          <td>Pasul</td>
+                        </tr>
+                         <!-- row 1 -->
+                         <tr class="">
+                            <th>1</th>
+                            <td>Cy Ganderton</td>
+                            <td>Quality Control Specialist</td>
+                            <td>Blue</td>
+                            <td>Pasul</td>
+                            <td>Pasul</td>
+                            <td>Pasul</td>
+                          </tr>
+                       
+                      </tbody>
+                    </table>
+                  </div>
                 
             
 
