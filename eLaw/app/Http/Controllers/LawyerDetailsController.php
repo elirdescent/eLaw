@@ -82,7 +82,31 @@ class LawyerDetailsController extends Controller
     }
 
 
-    
+    public function update(Request $request)
+    {
+        $details = LawyerDetails::where('lawyer_id','=',session('loginId'))->first();
+        $details->name = $request->input('name');
+        $details->surname = $request->input('surname');
+        $details->username = $request->input('username');
+        $details->city = $request->input('city');
+        $details->country = $request->input('country');
+        $details->address = $request->input('address');
+        $details->job = $request->input('job');
+        $details->pricing = $request->input('pricing');
+        $details->bio = $request->input('bio');
+       $res =  $details->update();
+       if($res)
+       {
+        return back()->with('success','Profile updated successfully!');
+
+       }
+       else
+       {
+        return back()->with('fail','Case could not be updated!');
+       }
+        
+
+    }
     
 
 }
