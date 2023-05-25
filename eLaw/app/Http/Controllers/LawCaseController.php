@@ -72,4 +72,11 @@ class LawCaseController extends Controller
         return redirect('/dash')->with('success',"Case removed successfully!");
 
     }
+
+    public function viewCase($id)
+    {
+        $case = LawCase::find($id);
+        return view('casedetails',compact('case'));
+
+    }
 }
