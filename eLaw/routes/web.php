@@ -74,3 +74,7 @@ Route::post('/lawyerCreate',[LawyerDetailsController::class,'createProfile'])->n
 Route::put('updateCase/{id}',[LawCaseController::class,'update']);
 
 Route::put('updateLawyerProfile',[LawyerDetailsController::class,'update']);
+
+Route::put('updatetask/{id}',[TaskController::class,'update']);
+
+Route::get('deletetask/{id}',[TaskController::class,'delete']);
