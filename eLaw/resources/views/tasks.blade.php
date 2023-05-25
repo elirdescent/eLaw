@@ -9,7 +9,76 @@
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
 </head>
 
+@foreach($lawyertask as $task)
 
+
+
+
+<!-- DELETE MODAL -->
+<input type="checkbox" id="my-modal-delete-{{$task['id']}}" class="modal-toggle" />
+<div class="modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg text-error">Warning!</h3>
+    <p class="py-4">Once a task is deleted, it cannot be recovered.</p>
+    <div class="modal-action">
+      <label for="my-modal-delete-{{$task['id']}}" class="btn">Discard</label>
+      <a href="{{url('deletetask/'.$task['id'])}}" class="btn btn-circle"><i class="fas fa-trash text-error"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- DELETE MODAL -->
+
+
+
+<!-- EDIT MODAL -->
+
+<input type="checkbox" id="my-modal-edit-{{$task['id']}}" class="modal-toggle" />
+<div class="modal">
+  <div class="modal-box">
+    <h1 class="mb-4  text-3xl font-extrabold text-gray-900 text-white md:text-3xl lg:text-3xl"><span class="text-transparent bg-clip-text bg-gradient-to-r to-red-600 from-sky-400">Edit Task</span></h1>
+    <form action="{{url('updatetask/'.$task['id'])}}" method="POST">
+      @csrf
+      @method('PUT')
+      <div class="">
+        <h2>Case Title</h2>
+        <input type="text" name="title" value="{{$task['title']}}" class="input text-blue-300 input-bordered input-teal-500 w-full max-w-xs" />
+      </div>
+      <div class="">
+        <h2>Client Name</h2>
+        <input type="text" name="name" value="{{$task['name']}}"  class="input text-blue-300 input-bordered input-teal-500 w-full max-w-xs" />
+      </div>
+      <div class="">
+        <h2>Client Surname</h2>
+        <input type="text" name="surname" value="{{$task['surname']}}" class="input text-blue-300 input-bordered input-teal-500 w-full max-w-xs" />
+      </div>
+      <div class="">
+        <h2>Case Description</h2>
+        <input type="text" name="task_description" value="{{$task['task_description']}}"  class="align-center input text-blue-300 input-bordered input-teal-500 w-full max-w-xs" >
+      </div>
+    
+      <div class="">
+        <h2>Case Progress</h2>
+        <input type="number" value="{{$task['case_progress']}}" placeholder="{{$task['case_progress']}}" name="case_progress" min="0" max="100"    class="align-center input text-blue-300 input-bordered input-teal-500 w-full max-w-xs"  />
+        <div class="w-full flex justify-between text-xs px-2">
+        </div>
+          
+        <div class="flex items-center ">
+        <button class="mt-2 btn border-none bg-teal-400 text-black hover:bg-blue-400 duration-300 hover:shadow-l" type="submit">Save</button>
+    
+        
+        <label for="my-modal-edit-{{$task['id']}}" class="btn border-none hover:bg-red-400 transition transition-duration-300 ease-in-out btn-circle btn-sm ml-2 mt-2"><i class="fas fa-minus"></i></label>
+        </div>
+      </div>
+    </form>
+       
+     
+    </div>
+  </div>
+</div>
+<!-- EDIT MODAL -->
+
+@endforeach
 
 <body>
     <div x-data="setup()" x-init="$refs.loading.classList.add('hidden');" @resize.window="watchScreen()">
@@ -529,6 +598,12 @@
                           {{$task['task_description']}}
                               </p>
                             </div>
+                            <div class="">
+                              <label for="my-modal-delete-{{$task['id']}}" class="btn btn-circle mr-5 mb-5"><i class="fas fa-trash"></i></label>
+                              <label for="my-modal-edit-{{$task['id']}}" class="btn btn-circle ml-5  mb-2"><i class="fas fa-edit"></i></label>
+                              
+                            </div>
+                          
                           </div>
                         </div>
               
