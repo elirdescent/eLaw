@@ -79,4 +79,20 @@ class LawCaseController extends Controller
         return view('casedetails',compact('case'));
 
     }
+
+    public function update(Request $request,$id)
+    {
+        $case = LawCase::find($id);
+        $case->title = $request->input('title');
+        $case->name = $request->input('name');
+        $case->surname = $request->input('surname');
+        $case->case_summary = $request->input('case_summary');
+        $case->case_description = $request->input('case_description');
+        $case->case_progress = $request->input('case_progress');
+        $case->update();
+        return back()->with('success','Case updated successfully!');
+        
+
+    }
+
 }
