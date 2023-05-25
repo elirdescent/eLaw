@@ -6,7 +6,140 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     @vite('resources/css/app.css')
+    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
 </head>
+
+<!-- EDIT CASE MODAL -->
+@foreach($lawcase as $case)
+<input type="checkbox" id="my-modal-case-{{$case->id}}" class="modal-toggle" />
+<div class="modal">
+  <div class="modal-box justify-center">
+    
+<form action="{{url('updateCase/'.$case->id)}}" method="POST">
+  @csrf
+  @method('PUT')
+  <div class="">
+    <h2>Case Title</h2>
+    <input type="text" name="title" value="{{$case['title']}}" class="input text-blue-300 input-bordered input-teal-500 w-full max-w-xs" />
+  </div>
+  <div class="">
+    <h2>Client Name</h2>
+    <input type="text" name="name" value="{{$case['name']}}"  class="input text-blue-300 input-bordered input-teal-500 w-full max-w-xs" />
+  </div>
+  <div class="">
+    <h2>Client Surname</h2>
+    <input type="text" name="surname" value="{{$case['surname']}}" class="input text-blue-300 input-bordered input-teal-500 w-full max-w-xs" />
+  </div>
+  <div class="">
+    <h2>Case Summary</h2>
+    <input type="text" name="case_summary" value="{{$case['case_summary']}}"  class="input text-blue-300 input-bordered input-teal-500 w-full max-w-xs" />
+  </div>
+
+  <div class="">
+    <h2>Case Description</h2>
+    <input type="text" name="case_description" value="{{$case['case_description']}}"  class="align-center input text-blue-300 input-bordered input-teal-500 w-full max-w-xs" >
+  </div>
+
+  <div class="">
+    <h2>Case Progress</h2>
+    <input type="number" value="{{$case['case_progress']}}" placeholder="{{$case['progress']}}" name="case_progress" min="0" max="100"    class="align-center input text-blue-300 input-bordered input-teal-500 w-full max-w-xs"  />
+    <div class="w-full flex justify-between text-xs px-2">
+    </div>
+      
+    <div class="flex items-center ">
+    <button class="mt-2 btn border-none bg-teal-400 text-black hover:bg-blue-400 duration-300 hover:shadow-l" type="submit">Save</button>
+
+    
+      <label for="my-modal-case-{{$case->id}}" class="cursor-pointer hover:bg-red-500 btn-sm btn-circle bg-red-400 p-2 ml-2 mt-2 text-black text-center text-bold transition duration-300 ease-in-out">
+        <i class=" fas fa-minus text-lg "></i>
+      </label>
+    </div>
+  </div>
+</form>
+    <div class="modal-action">
+     
+      
+    </div>
+  </div>
+</div>
+@endforeach
+
+<!-- EDIT CASE MODAL -->
+
+@foreach($lawcase as $case)
+
+<!--DELETE CASE MODAL -->
+
+<input type="checkbox" id="my-modal-delete-{{$case->id}}" class="modal-toggle" />
+<div class="modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg text-error">Warning!</h3>
+    <p class="py-4">Once a case is deleted, it cannot be recovered.</p>
+    <div class="modal-action">
+      <label for="my-modal-delete-{{$case->id}}" class="btn">Discard</label>
+
+      <button class="btn  btn-circle">
+      <label for="my-modal-delete-{{$case->id}}" class="btn-circle pt-3.5">
+       
+          <a href="{{url('deletecase/'.$case->id)}}">
+            <i class=" fas fa-trash text-lg text-error"></i>
+        </a>
+        </button>
+      </label>
+    </div>
+  </div>
+</div>
+
+<!-- DELETE CASE MODAL -->
+@endforeach
+
+
+<!-- CASE DETAILS MODAL -->
+
+@foreach($lawcase as $case)
+
+
+<input type="checkbox" id="my-modal-view-{{$case->id}}" class="modal-toggle" />
+<div class="modal">
+  <div class="modal-box">
+    <h2 class="mb-4 text-4xl font-extrabold text-gray-900 text-white md:text-4xl lg:text-4xl"><span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">{{$case->title}}</span></h2>
+
+ 
+
+   
+        <h3 class="text-xl font-medium text-blue-300">Client Name</h3>
+        <p class="mb-2 text-slate-500">{{$case->name}}</p>
+
+        <h3 class="text-xl font-medium text-blue-300 mt-3">Client Surname</h3>
+        <p class="mb-2 text-slate-500">{{$case->surname}}</p>
+
+        <h3 class="text-xl font-medium text-blue-300 mt-3">Summary</h3>
+        <p class="mb-2 text-slate-500">{{$case->case_summary}}</p>
+
+        <h3 class="text-xl font-medium text-blue-300 mt-3">Case Progress</h3>
+        <progress class="progress progress-info w-56 bg-gray-700" value="{{$case->case_progress}}" max="100"></progress>
+        <p class="mb-2 text-slate-500">{{$case->case_progress}} %</p>
+
+
+        <h3 class="text-xl font-medium text-blue-300 mt-3">Case Description</h3>
+        <p class="mb-2 text-slate-500">{{$case->case_description}} </p>
+
+
+
+      
+    
+    <div class="modal-action">
+      <label for="my-modal-view-{{$case->id}}" class="btn">EXIT</label>
+    </div>
+  </div>
+</div>
+
+@endforeach
+
+<!-- CASE DETAILS MODAL -->
+ 
+
+
 <body>
     <div x-data="setup()" x-init="$refs.loading.classList.add('hidden');" @resize.window="watchScreen()">
         <div class="flex p-0 m-0 antialiased text-gray-900 " >
@@ -92,7 +225,7 @@
 
                   
   
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Settings</a>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Create/Update Profile</a>
   
                   <a href="logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Sign out</a>
                 </div>
@@ -154,28 +287,7 @@
                  
                 </button>
                 <!-- Notifications button -->
-                <button
-                  @click="(isSidebarOpen && currentSidebarTab == 'notificationsTab') ? isSidebarOpen = false : isSidebarOpen = true; currentSidebarTab = 'notificationsTab'"
-                  class="p-2 transition-colors bg-neutral-800 rounded-lg shadow-md  hover:text-blue-300  focus:outline-none focus:ring focus:ring-blue-300 focus:ring-offset-white focus:ring-offset-2"
-                  :class="(isSidebarOpen && currentSidebarTab == 'notificationsTab') ? 'text-white bg-indigo-600' : 'text-gray-500 '"
-                >
-                  <span class="sr-only">Toggle case adding panel</span>
-                  <svg
-                    aria-hidden="true"
-                    class="w-6 h-6"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-                    />
-                  </svg>
-                </button>
+               
               </div>
   
               <!-- User avatar -->
@@ -202,11 +314,11 @@
                   aria-orientation="vertical"
                   aria-label="user menu"
                 >
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"
+                  <a href="{{route('userprofile')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"
                     >Your Profile</a
                   >
   
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Settings</a>
+                  <a href="{{route('lawyerup')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Create/Update Profile</a>
   
                   <a href="logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Sign out</a>
                 </div>
@@ -270,7 +382,7 @@
                     <span>Home</span>
                   </a>
                   <a
-                    href="#"
+                    href="{{route('lawyertasks')}}"
                     class="flex items-center space-x-2 text-blue-800 transition-colors rounded-lg group hover:bg-blue-300 hover:text-white"
                   >
                     <span
@@ -292,7 +404,7 @@
                         />
                       </svg>
                     </span>
-                    <span>Pages</span>
+                    <span>Tasks</span>
                   </a>
                 </div>
   
@@ -301,48 +413,68 @@
   
               <section x-show="currentSidebarTab == 'messagesTab'" class="px-2 py-2">
                 <h2 class="text-xl">Add a case</h2>
-         <!-- ADD A CASE -->
-         <form class="pt-10"  method="post">
-            @csrf
+           <!-- ADD A CASE -->
+                <form class="pt-10" action="{{route('saveCase')}}" method="post">
+                  @csrf
 
-  
-          
+                  @if(Session::has('success'))
+                  <div class="flex rounded-lg items-center bg-blue-500 text-white text-sm font-bold px-4 py-3" role="alert">
+                      <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.432 0c1.34 0 2.01.912 2.01 1.957 0 1.305-1.164 2.512-2.679 2.512-1.269 0-2.009-.75-1.974-1.99C9.789 1.436 10.67 0 12.432 0zM8.309 20c-1.058 0-1.833-.652-1.093-3.524l1.214-5.092c.211-.814.246-1.141 0-1.141-.317 0-1.689.562-2.502 1.117l-.528-.88c2.572-2.186 5.531-3.467 6.801-3.467 1.057 0 1.233 1.273.705 3.23l-1.391 5.352c-.246.945-.141 1.271.106 1.271.317 0 1.357-.392 2.379-1.207l.6.814C12.098 19.02 9.365 20 8.309 20z"/></svg>
+                      <p>{{Session::get('success')}}</p>
+                    </div>
+                    @endif
+                   
 
-            <div class="">
-              <h2>Case Title</h2>
-              <input type="text" name="title"  class="input text-blue-300 input-bordered input-teal-500 w-full max-w-xs" />
-            </div>
-            <div class="">
-              <h2>Client Name</h2>
-              <input type="text" name="name"  class="input text-blue-300 input-bordered input-teal-500 w-full max-w-xs" />
-            </div>
-            <div class="">
-              <h2>Client Surname</h2>
-              <input type="text" name="surname"  class="input text-blue-300 input-bordered input-teal-500 w-full max-w-xs" />
-            </div>
-            <div class="">
-              <h2>Case Summary</h2>
-              <input type="text" name="case_summary"  class="input text-blue-300 input-bordered input-teal-500 w-full max-w-xs" />
-            </div>
+                    @if(Session::has('fail'))
+                    <div class="flex rounded-lg items-center bg-red-500 text-white text-sm font-bold px-4 py-3" role="alert">
+                        <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.432 0c1.34 0 2.01.912 2.01 1.957 0 1.305-1.164 2.512-2.679 2.512-1.269 0-2.009-.75-1.974-1.99C9.789 1.436 10.67 0 12.432 0zM8.309 20c-1.058 0-1.833-.652-1.093-3.524l1.214-5.092c.211-.814.246-1.141 0-1.141-.317 0-1.689.562-2.502 1.117l-.528-.88c2.572-2.186 5.531-3.467 6.801-3.467 1.057 0 1.233 1.273.705 3.23l-1.391 5.352c-.246.945-.141 1.271.106 1.271.317 0 1.357-.392 2.379-1.207l.6.814C12.098 19.02 9.365 20 8.309 20z"/></svg>
+                        <p>{{Session::get('fail')}}.</p>
+                      </div>
+                      @endif
 
-            <div class="">
-              <h2>Case Description</h2>
-              <textarea type="text" name="case_description"  class="align-center input text-blue-300 input-bordered input-teal-500 w-full max-w-xs" ></textarea>
-            </div>
+                          @error('name') 
+                          <div class="bg-red-200 border border-red-400 text-red-700 px-2 py-3 rounded relative" role="alert">
+                            <span class="block sm:inline">{{$message}} </span>
+                          </div>
+                          @enderror
 
-            <div class="">
-              <h2>Case Progress</h2>
-              <input type="number" name="case_progress" min="0" max="100"    class="align-center input text-blue-300 input-bordered input-teal-500 w-full max-w-xs"  />
-              <div class="w-full flex justify-between text-xs px-2">
-              </div>
                 
-            <div class="pt-2">
-              <button class="btn border-none bg-teal-400 text-black hover:bg-blue-400 duration-300 hover:shadow-l" type="submit">Add Case</button>
-            </div>
-        
 
-          </form>
-     <!-- ADD A CASE -->
+                  <div class="">
+                    <h2>Case Title</h2>
+                    <input type="text" name="title"  class="input text-blue-300 input-bordered input-teal-500 w-full max-w-xs" />
+                  </div>
+                  <div class="">
+                    <h2>Client Name</h2>
+                    <input type="text" name="name"  class="input text-blue-300 input-bordered input-teal-500 w-full max-w-xs" />
+                  </div>
+                  <div class="">
+                    <h2>Client Surname</h2>
+                    <input type="text" name="surname"  class="input text-blue-300 input-bordered input-teal-500 w-full max-w-xs" />
+                  </div>
+                  <div class="">
+                    <h2>Case Summary</h2>
+                    <input type="text" name="case_summary"  class="input text-blue-300 input-bordered input-teal-500 w-full max-w-xs" />
+                  </div>
+
+                  <div class="">
+                    <h2>Case Description</h2>
+                    <textarea type="text" name="case_description"  class="align-center input text-blue-300 input-bordered input-teal-500 w-full max-w-xs" ></textarea>
+                  </div>
+
+                  <div class="">
+                    <h2>Case Progress</h2>
+                    <input type="number" name="case_progress" min="0" max="100"    class="align-center input text-blue-300 input-bordered input-teal-500 w-full max-w-xs"  />
+                    <div class="w-full flex justify-between text-xs px-2">
+                    </div>
+                      
+                  <div class="pt-2">
+                    <button class="btn border-none bg-teal-400 text-black hover:bg-blue-400 duration-300 hover:shadow-l" type="submit">Add Case</button>
+                  </div>
+              
+ 
+                </form>
+           <!-- ADD A CASE -->
               </section>
   
               <section x-show="currentSidebarTab == 'notificationsTab'" class="px-4 py-6">
@@ -398,7 +530,7 @@
                   @click="isSettingsPanelOpen = true; isSubHeaderOpen = false"
                   class="p-2 text-gray-400 bg-blue-200 rounded-lg shadow-md hover:text-gray-600 focus:outline-none focus:ring focus:ring-white focus:ring-offset-gray-100 focus:ring-offset-4"
                 >
-                  <span class="sr-only">Settings</span>
+                  <span class="sr-only">Create/Update Profile</span>
                   <svg
                     aria-hidden="true"
                     class="w-6 h-6"
@@ -476,16 +608,47 @@
                 
                 
                 
+                
+                
                
                 <div class="reviews  mb-20 ml-10 mr-10">
+
+                  @if(Session::has('success'))
+                  <div class="flex items-center justify-center pl-10 pb-5">
+                    <div class="flex alert shadow-lg ">
+                      <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="text-white stroke-info flex-shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span class="text-white">{{Session::get('success')}}.</span>
+                      </div>
+                  </div>
+                  </div>
+                    @endif
+
+                    @if(Session::has('fail'))
+                    <div class="flex items-center justify-center pl-10 pb-5">
+                      <div class="flex alert shadow-lg ">
+                        <div>
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="text-white stroke-info flex-shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                          <span class="text-white">{{Session::get('fail')}}</span>
+                        </div>
+                    </div>
+                    </div>
+                      @endif
+
+             
+                  
                   
                   <h1 class="mb-4 ml-10 text-6xl font-extrabold text-gray-900 text-white md:text-5xl lg:text-6xl"><span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Cases</span></h1>
 
                 
                   
                   <section class="text-neutral-700 text-neutral-300">
-                    <!--Case-->
-                    <div class="grid lg:ml-10 gap-6 text-center md:grid-cols-3">
+                    
+                    
+                   
+                    
+                      <!--Case-->
+                      <div class="grid lg:ml-10 gap-6 text-center md:grid-cols-3">
                         @foreach ($lawcase as $case)
 
                         <!--Case-->
@@ -493,6 +656,7 @@
                           <div>
                             <div
                               class="block rounded-lg text-white  shadow-lg bg-neutral-700 shadow-black/30">
+                              
                               <div class=" overflow-hidden rounded-t-lg bg-neutral-700">
                                 <h4 class="mb-4 mt-5 text-2xl font-semibold"> {{$case['title']}} </h4> 
                                            <div class="p-none m-none h-30 radial-progress bg-blue-200 text-teal-700 border-4 border-blue-200" style="--value:{{$case['case_progress']}};">{{$case['case_progress']}} %</div>
@@ -501,13 +665,12 @@
                    
                               <div
                                 class="m overflow-hidden rounded-full   ">
-                      
-                               
                               </div>
                               <div class="p-6">
+                                
                                 <h4 class="mb-4 text-2xl font-semibold">{{$case['name']}} {{$case['surname']}}</h4>
                                 <hr />
-                                <p class="justify-center mt-4 ">
+                                <p class="flex justify-center mt-4 ">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     fill="currentColor"
@@ -516,7 +679,40 @@
                                   </svg>
                                {{$case['case_summary']}}
                                 </p>
+                                <div class="flex mt-2 justify-around items-center">
+                                  
+                                    <label for="my-modal-view-{{$case->id}}" class="btn btn-circle">
+                                      <i class=" fas fa-info text-lg text-blue-300"></i></label>
+
+                                     
+                                    </a>
+
+                                  </button>
+
+                                  <!--  <a href="{{url('deletecase/'.$case->id)}}"> -->
+                                    <button class="btn  btn-circle text-center ">
+                                  <label for="my-modal-delete-{{$case->id}}" class="cursor-pointer btn-circle text-center pt-3.5">
+                                 
+                                
+                                      <i class=" fas fa-trash text-lg text-blue-300"></i>
+                                  </a>
+                                  </button>
+                                </label>
+
+                                  <label for="my-modal-case-{{$case->id}}" class=" btn btn-circle h-30 w-30 ">
+                                   
+                                      <i class=" fas fa-edit  text-lg text-blue-300"></i>
+                                   
+                                    
+                                  </label>
+
+                                 
+                                  
+                                 
+                                </div>
+                              
                               </div>
+                              
                             </div>
                           </div>
   
@@ -525,12 +721,8 @@
   
                             
                         @endforeach
-                    
-                   
-                    
-                    
 
-                   
+                      </div>
 
 
                       
@@ -574,7 +766,7 @@
           class="fixed inset-y-0 right-0 w-64 bg-white border-l border-indigo-100 rounded-l-3xl"
         >
           <div class="px-4 py-8">
-            <h2 class="text-lg font-semibold">Settings</h2>
+            <h2 class="text-lg font-semibold">Create/Update Profile</h2>
           </div>
         </section>
   
