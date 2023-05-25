@@ -55,6 +55,27 @@ class TaskController extends Controller
             $task->delete();
             return back()->with('success','Task deleted successfully!');
         }
+
+        public function update(Request $request, $id)
+        {
+            $task = Task::find($id);
+            $task->title = $request->input('title');
+            $task->name = $request->input('name');
+            $task->surname= $request->input('surname');
+            $task->task_description = $request->input('task_description');
+            $task->case_progress = $request->input('case_progress');
+            $res = $task->update();
+            if($res)
+            {
+                return back()->with('success','Task updated successfully!');
+            }
+            else
+            {
+                return back()->with('fail','Task could not be updated!');
+            }
+
+        }
+}
   
    
 }
