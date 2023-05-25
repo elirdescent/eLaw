@@ -64,4 +64,12 @@ class LawCaseController extends Controller
         }
 
     }
+
+    public function delete($id)
+    {
+        $case = LawCase::find($id);
+        $case->delete();
+        return redirect('/dash')->with('success',"Case removed successfully!");
+
+    }
 }
