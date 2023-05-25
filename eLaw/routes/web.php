@@ -46,3 +46,31 @@ Route::view('/clientinfo','clientinfo');
 
 Route::post('/dash',[LawCaseController::class,'addCase'])->name('saveCase');
 Route::get('/dash', [LawCaseController::class, 'show'])->middleware(['isLoggedIn','alreadyLoggedIn']);
+
+
+Route::view('/tasks','tasks');
+
+Route::get('deletecase/{id}',[LawCaseController::class,'delete']);
+
+Route::view('/cases','casedetails');
+
+Route::get('view-case/{id}',[LawCaseController::class,'viewCase']);
+
+
+Route::post('/task',[TaskController::class,'addTask'])->name('saveTask');
+Route::get('/tasks',[TaskController::class,'show'])->name("lawyertasks");
+
+Route::view('/reviews','reviews');
+
+Route::view('/rev','review');
+
+Route::view('/lawyerup','updatelawyer')->name('lawyerup');
+
+Route::get('/userprofile',[LawyerDetailsController::class,'show'])->name('userprofile');
+
+Route::get('/lawyerCreate',[LawyerDetailsController::class,'createProfile'])->name('lawProfile');
+Route::post('/lawyerCreate',[LawyerDetailsController::class,'createProfile'])->name('lawCreate');
+
+Route::put('updateCase/{id}',[LawCaseController::class,'update']);
+
+Route::put('updateLawyerProfile',[LawyerDetailsController::class,'update']);
