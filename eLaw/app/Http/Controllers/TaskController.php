@@ -48,6 +48,13 @@ class TaskController extends Controller
             return back()->with('fail','Case could not be added!');
         }
         }
+
+        public function delete($id)
+        {
+            $task = Task::find($id);
+            $task->delete();
+            return back()->with('success','Task deleted successfully!');
+        }
   
    
 }
