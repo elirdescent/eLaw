@@ -9,5 +9,18 @@ use App\Models\Client;
 
 class ReviewController extends Controller
 {
-   
+    public function show()
+    {
+
+        
+        $data = User::all();
+        $reviews = Review::all();
+        
+
+        return view('review',['lawyerdata'=>$data],['reviewdata'=>$reviews]);
+
+
+    }
+
+    
 }
