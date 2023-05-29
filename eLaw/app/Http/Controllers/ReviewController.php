@@ -22,5 +22,36 @@ class ReviewController extends Controller
 
     }
 
-    
+    public function store(Request $request)
+    {
+        $request->validate([
+            'title'=>'required|regex:/^[a-zA-Z]+$/',
+            'description'=>'required',
+            'lawyer_username'=>'required',
+            'rating'=>'required'
+        ],
+        );
+        $review = new Review();
+        $review->client_id = session('loginId');
+        $review->title = $request->title;
+        $review->description = $request->description;
+        $review->lawyer_username = $request->lawyer_username;
+        $review->rating = $request->rating;
+        $res = $review->save();
+        if($res)
+        {
+            return back()->with('success','Review posted successfully!');
+        }
+        else
+        {
+            return back()->with('fail','Review could not be posted!');
+        }
+    }
+
+    public function delete($id)
+    {
+        $review = Review::find($id);
+        $review->delete();
+        return back()->with('success','Review deleted successfully!');
+    }
 }
