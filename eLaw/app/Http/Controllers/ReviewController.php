@@ -16,6 +16,7 @@ class ReviewController extends Controller
         $data = User::all();
         $reviews = Review::all();
         
+        
 
         return view('review',['lawyerdata'=>$data],['reviewdata'=>$reviews]);
 
@@ -51,7 +52,15 @@ class ReviewController extends Controller
     public function delete($id)
     {
         $review = Review::find($id);
-        $review->delete();
-        return back()->with('success','Review deleted successfully!');
+        $res = $review->delete();
+        if($res)
+        {
+            return back()->with('success','Review deleted successfully!');
+        }
+        else
+        {
+            return back()->with('fail','Review could not be deleted!');
+        }
+        
     }
 }

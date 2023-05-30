@@ -27,5 +27,11 @@ class ReportController extends Controller
 
     }
 
+    public function showAll()
+    {
+        $data = Report::all();
+        return view('reportlist',['report'=>$data]);
+    }
+
     
 }

@@ -66,6 +66,7 @@ class LawyerDetailsController extends Controller
     $details->pricing = $request->pricing;
     $details->bio = $request->bio;
     $res = $details->save();
+    $data = LawyerDetails::where('lawyer_id','=',session('loginId'))->first();
     if($res)
     {
 
@@ -73,9 +74,13 @@ class LawyerDetailsController extends Controller
 
         return back()->with('success','Profile created successfully!');
     }
+    else if($data)
+    {
+        return back()->with('fail','Profile already exists!');
+    }
     else
     {
-        return back()->with('error','Profile already exists or could not be created!');
+        return back()->with('fail','Profile could not be created!');
     }
 
     
@@ -102,11 +107,34 @@ class LawyerDetailsController extends Controller
        }
        else
        {
-        return back()->with('fail','Case could not be updated!');
+        return back()->with('fail','Profile could not be updated!');
        }
         
 
     }
+
+    public function showAll()
+    {
+        $data = LawyerDetails::all();
+        return view('lawyersearch',['details'=>$data]);
+    }
+
+    public function search()
+    {
+        $search_text = $_GET['query'];
+        $data = LawyerDetails::where('username','LIKE','%'.$search_text.'%')->get();
+        return view('lawyersearch',['details'=>$data]);
+    }
+
+    public function sortByLocation()
+    {
+        $search_text = $_GET['city'];
+        $data = LawyerDetails::where('city','=',$search_text)->get();
+        return view('lawyersearch',['details'=>$data]);
+
+    }
+
+    
     
 
 }

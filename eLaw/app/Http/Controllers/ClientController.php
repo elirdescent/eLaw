@@ -20,6 +20,7 @@ class ClientController extends Controller
         return view("registerclient");
 
     }
+
     public function registerClient(Request $request)
     {
        $request->validate([
@@ -56,10 +57,10 @@ class ClientController extends Controller
         return back()->with('fail','Oops! Something went wrong.');
     }
 
-   
-}
 
-public function loginClient(Request $request)
+    }
+
+    public function loginClient(Request $request)
     {
         $request->validate([
             'username'=>'required|regex:/^[a-zA-Z0-9]+$/',
@@ -77,7 +78,11 @@ public function loginClient(Request $request)
             if(Hash::check($request->password,$client->password))
             {
                 $request->session()->put('loginId',$client->id);
-                return redirect('userprofile');
+                $request->session()->put('userType','client');
+                $request->session()->put('username',$client->username);
+                
+                return redirect('review');
+                
 
             }
             else
@@ -112,6 +117,36 @@ public function loginClient(Request $request)
         }
 
     }
+
+    public function getAll()
+    {
+        $data = Client::all();
+        return view('adminclient',['client'=>$data]);
+    }
+
+    public function viewUsers()
+    {
+        $data = Client::all();
+        return view('clientlist',['client'=>$data]);
+    }
+
+
+    public function delete($id)
+    {
+        $client = Client::where('id','=',$id);
+        $res=$client->delete();
+        if($res)
+        {
+            return back()->with('success','Client deleted successfully!');
+        }
+        else
+        {
+            return back()->with('fail','Client could not be deleted!');
+        }
+
+    }
+
+    
 
    
 

@@ -8,7 +8,7 @@ use Session;
 
 
 class TaskController extends Controller
-{  
+{
     public function show()
     {
         
@@ -19,6 +19,7 @@ class TaskController extends Controller
         
        
     }
+
     public function addTask(Request $request)
     {
         $request->validate([
@@ -76,6 +77,3 @@ class TaskController extends Controller
 
         }
 }
-  
-   
-

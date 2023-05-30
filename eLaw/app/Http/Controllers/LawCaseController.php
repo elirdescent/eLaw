@@ -45,7 +45,7 @@ class LawCaseController extends Controller
             $res = $case->save();
             if($res)
             {
-                return redirect('dash');
+                return redirect('dash')->with('success','Case added successfully!');
 
             }
             else{
