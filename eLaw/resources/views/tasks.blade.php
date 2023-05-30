@@ -301,41 +301,58 @@
                 </div>
   
                 <!-- Links -->
-                <div class="flex-1 px-4 space-y-2 overflow-hidden hover:overflow-auto">
-                  <a href="{{route('lawyercases')}}" class="flex items-center w-full space-x-2 text-blue-800 hover:bg-blue-300 transition duration-300 ease-in-out rounded-lg">
-                    <span aria-hidden="true" class="p-2  rounded-lg">
-                   <i class="ml-1 fas fa-box"></i>
-                    </span>
-                    <span>Cases</span>
-                  </a>
-                  <a
-                    href="{{route('lawyertasks')}}"
-                    class="flex items-center space-x-2 text-blue-800 transition-colors rounded-lg group hover:bg-blue-300 hover:text-white"
+               <div class="flex-1 justify-start px-4 space-y-2 overflow-hidden hover:overflow-auto">
+                <a href="{{route('lawyercases')}}" class="flex items-center space-x-2 text-blue-800 transition-colors rounded-lg group hover:bg-blue-300 hover:text-white">
+                  <span aria-hidden="true" class="p-2 transition-colors rounded-lg group-hover:bg-blue-300 group-hover:text-white">
+                  <i class="fas fa-box  "></i>
+                  </span>
+                  <span class="">Cases</span>
+                </a>
+                <a
+                  href="{{route('lawyertasks')}}"
+                  class="flex items-center space-x-2 text-blue-800 transition-colors rounded-lg group hover:bg-blue-300 hover:text-white"
+                >
+                  <span
+                    aria-hidden="true"
+                    class="pl-2 pr-1 pt-2 pb-2 transition-colors rounded-lg group-hover:bg-blue-300 group-hover:text-white"
                   >
-                    <span
-                      aria-hidden="true"
-                      class="p-2 transition-colors rounded-lg group-hover:bg-blue-300 group-hover:text-white"
-                    >
-                      <svg
-                        class="w-6 h-6"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-                        />
-                      </svg>
-                    </span>
-                    <span>Tasks</span>
-                  </a>
-                </div>
-  
+                  <i class="fas fa-archive"></i>
+                 
+                  </span>
+                  <span class="m-0">Tasks</span>
+                </a>
+
+                <a
+                href="{{route('viewclients')}}"
+                class="flex items-center space-x-2 text-blue-800 transition-colors rounded-lg group hover:bg-blue-300 hover:text-white"
+              >
+                <span
+                  aria-hidden="true"
+                  class="pl-2 pr-1 pt-2 pb-2 transition-colors rounded-lg group-hover:bg-blue-300 group-hover:text-white"
+                >
+                <i class="fas fa-user"></i>
                
+                </span>
+                <span class="m-0">Users</span>
+              </a>
+
+                <a
+                href="{{route('clientposts')}}"
+                class="flex items-center space-x-2 text-blue-800 transition-colors rounded-lg group hover:bg-blue-300 hover:text-white"
+              >
+                <span
+                  aria-hidden="true"
+                  class="pl-2 pr-1 pt-2 pb-2 transition-colors rounded-lg group-hover:bg-blue-300 group-hover:text-white"
+                >
+                <i class="fas fa-balance-scale"></i>
+               
+                </span>
+                <span class="m-0">Legal Issues</span>
+              </a>
+
+            
+
+              </div>
               </nav>
   
               <section x-show="currentSidebarTab == 'messagesTab'" class="px-2 py-2">

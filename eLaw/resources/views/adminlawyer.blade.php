@@ -4,13 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="icon" type="image/x-icon" href="/images/elaw.png">
+    <title>Lawyer List</title>
     @vite('resources/css/app.css')
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
 </head>
 
 
- 
+
+@foreach($lawyer as $law)
+<input type="checkbox" id="my-modal-delete-{{$law->id}}" class="modal-toggle" />
+<div class="modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg text-error">Warning!</h3>
+    <p class="py-4">Once a user is deleted, their account cannot be recovered.</p>
+    <div class="modal-action">
+      <label for="my-modal-delete-{{$law->id}}" class="btn">DISCARD</label>
+      <button class="btn"><a href="{{URL('deletelawyer/'.$law->id)}}"><i class="fas fa-trash text-error"></i></a></button>
+    </div>
+  </div>
+</div> 
+@endforeach
 
 
 <body>
@@ -76,7 +90,7 @@
                 >
                   <img
                     class="w-8 h-8 rounded-lg shadow-md"
-                    src="https://avatars.githubusercontent.com/u/57622665?s=460&u=8f581f4c4acd4c18c33a87b3e6476112325e8b38&v=4"
+                    src="{{URL('images/adminavatar.png')}}"
                     alt="Ahmed Kamel"
                   />
                   <span class="sr-only">User menu</span>
@@ -87,18 +101,12 @@
                   @keydown.escape="isOpen = false"
                   x-ref="userMenu"
                   tabindex="-1"
-                  class="absolute w-48 py-1 mt-2 origin-bottom-left bg-blue-300 rounded-md shadow-lg left-10 bottom-14 focus:outline-none"
+                  class="absolute w-48 py-1 mt-2 origin-bottom-left bg-gray-100 rounded-md shadow-lg left-10 bottom-14 focus:outline-none"
                   role="menu"
                   aria-orientation="vertical"
                   aria-label="user menu"
                 >
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"
-                    >Your Profile</a
-                  >
-
-                  
-  
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Create/Update Profile</a>
+         
   
                   <a href="logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Sign out</a>
                 </div>
@@ -140,48 +148,9 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
                   </svg>
                 </button>
-                <!-- Messages button -->
-                <button
-                  @click="(isSidebarOpen && currentSidebarTab == 'messagesTab') ? isSidebarOpen = false : isSidebarOpen = true; currentSidebarTab = 'messagesTab'"
-                  class="p-2 transition-colors bg-blue-300 rounded-lg shadow-md  hover:text-blue-300 hover:bg-teal-300 duration-300  focus:outline-none focus:ring focus:ring-blue-300  focus:ring-offset-white focus:ring-offset-2"
-                  :class="(isSidebarOpen && currentSidebarTab == 'messagesTab') ? 'text-white bg-teal-300' : 'text-gray-500 '"
-                >
-                  <span class="sr-only">Toggle message panel</span>
-            
-                  
-                  <svg 
-                   aria-hidden="true"
-                  class="w-6 h-6"
-              
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="Edit / Add_Plus"> <path id="Vector" d="M6 12H12M12 12H18M12 12V18M12 12V6" stroke="#878787" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g> </g></svg>
-                 
-                 
-                </button>
+               
                 <!-- Notifications button -->
-                <button
-                  @click="(isSidebarOpen && currentSidebarTab == 'notificationsTab') ? isSidebarOpen = false : isSidebarOpen = true; currentSidebarTab = 'notificationsTab'"
-                  class="p-2 transition-colors bg-neutral-800 rounded-lg shadow-md  hover:text-blue-300  focus:outline-none focus:ring focus:ring-blue-300 focus:ring-offset-white focus:ring-offset-2"
-                  :class="(isSidebarOpen && currentSidebarTab == 'notificationsTab') ? 'text-white bg-indigo-600' : 'text-gray-500 '"
-                >
-                  <span class="sr-only">Toggle case adding panel</span>
-                  <svg
-                    aria-hidden="true"
-                    class="w-6 h-6"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-                    />
-                  </svg>
-                </button>
+               
               </div>
   
               <!-- User avatar -->
@@ -192,7 +161,7 @@
                 >
                   <img
                     class="w-10 h-10 rounded-lg shadow-md"
-                    src="{{URL('images/avatar.png')}}"
+                    src="{{URL('images/adminavatar.png')}}"
                     alt="Ahmed Kamel"
                   />
                   <span class="sr-only">User menu</span>
@@ -208,11 +177,7 @@
                   aria-orientation="vertical"
                   aria-label="user menu"
                 >
-                  <a href="{{route('userprofile')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"
-                    >Your Profile</a
-                  >
-  
-                  <a href="{{route('lawyerup')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Create/Update Profile</a>
+               
   
                   <a href="logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Sign out</a>
                 </div>
@@ -229,9 +194,9 @@
               x-show="isSidebarOpen"
               class="fixed inset-y-0 left-0 z-10 flex-shrink-0 w-64 bg-blue-200   shadow-lg sm:left-16 rounded-tr-3xl rounded-br-3xl sm:w-72 lg:static lg:w-64"
             >
-              <nav x-show="currentSidebarTab == 'linksTab'" aria-label="Main" class="flex flex-col h-full">
+              <nav x-show="currentSidebarTab == 'linksTab'" aria-label="Main" class="z-100 flex flex-col h-full">
                 <!-- Logo -->
-                <div class="flex items-center justify-center flex-shrink-0 py-10">
+                <div class="z-100 flex items-center justify-center flex-shrink-0 py-10">
                   <a href="#">
                     <!-- <svg
                       class="text-indigo-600"
@@ -255,51 +220,40 @@
                 </div>
   
                 <!-- Links -->
-                <div class="flex-1 px-4 space-y-2 overflow-hidden hover:overflow-auto">
-                  <a href="#" class="flex items-center w-full space-x-2 text-white bg-blue-300 rounded-lg">
-                    <span aria-hidden="true" class="p-2 bg-blue-300 rounded-lg">
-                      <svg
-                        class="w-6 h-6"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                        />
-                      </svg>
+                <div class="flex-1 justify-start px-4 space-y-2 overflow-hidden hover:overflow-auto">
+                  <a href="{{route('adminlawyer')}}" class="flex items-center space-x-2 text-blue-800 transition-colors rounded-lg group hover:bg-blue-300 hover:text-white">
+                    <span aria-hidden="true" class="p-2 transition-colors rounded-lg group-hover:bg-blue-300 group-hover:text-white">
+                    <i class="fas fa-user-tie  "></i>
                     </span>
-                    <span>Home</span>
+                    <span class="">Lawyers</span>
                   </a>
                   <a
-                    href="{{route('lawyertasks')}}"
+                    href="{{route('adminclient')}}"
                     class="flex items-center space-x-2 text-blue-800 transition-colors rounded-lg group hover:bg-blue-300 hover:text-white"
                   >
                     <span
                       aria-hidden="true"
-                      class="p-2 transition-colors rounded-lg group-hover:bg-blue-300 group-hover:text-white"
+                      class="pl-1 pr-1 pt-2 pb-2 transition-colors rounded-lg group-hover:bg-blue-300 group-hover:text-white"
                     >
-                      <svg
-                        class="w-6 h-6"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-                        />
-                      </svg>
+                    <i class="fas fa-user ml-1"></i>
+                   
                     </span>
-                    <span>Tasks</span>
+                    <span class="">Clients</span>
                   </a>
+
+                  <a
+                  href="{{route('reports')}}"
+                  class="flex items-center space-x-2 text-blue-800 transition-colors rounded-lg group hover:bg-blue-300 hover:text-white"
+                >
+                  <span
+                    aria-hidden="true"
+                    class="pl-2 pr-1 pt-2 pb-2 transition-colors rounded-lg group-hover:bg-blue-300 group-hover:text-white"
+                  >
+                  <i class="fas fa-exclamation-circle"></i>
+                 
+                  </span>
+                  <span class="m-0">Reports</span>
+                </a>
                 </div>
   
                
@@ -370,6 +324,8 @@
                 </form>
            <!-- ADD A CASE -->
               </section>
+
+              
   
               <section x-show="currentSidebarTab == 'notificationsTab'" class="px-4 py-6">
                 <h2 class="text-xl">Notifications</h2>
@@ -495,65 +451,66 @@
                 
               </div>
             </header>
-  
+
+          @if(Session::has('success'))
+            <div class="ml-10 w-1/4 flex items-center justify-center pl-10 pb-5">
+              <div class="flex alert shadow-lg ">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="text-white stroke-info flex-shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  <span class="text-white">{{Session::get('success')}}</span>
+                </div>
+            </div>
+            </div>
+            @endif
+
+            @if(Session::has('fail'))
+            <div class="ml-10 w-1/4 flex items-center justify-center pl-10 pb-5">
+              <div class="flex alert shadow-lg ">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="text-white stroke-info flex-shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  <span class="text-white">{{Session::get('fail')}}</span>
+                </div>
+            </div>
+            </div>
+            @endif
+            
+            <div class="lg:ml-20 sm:ml-10 md:ml-10">
+            <h1 class="ml-4 text-normal text-6xl font-extrabold text-gray-900 text-white md:text-5xl lg:text-6xl"><span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Lawyers</span></h1>
+          </div>
             <div class="flex flex-2  ">
               <!-- Main -->
-              <main class="flex items-start justify-center flex-1 px-4  py-0  ">
-                <div class="overflow-x-auto">
-                    <table class="table table-zebra w-full text-blue-300 ">
+              <main class="z-0 flex items-start justify-center flex-1 px-4  py-0  ">
+                
+                <div class="overflow-x-auto w-full lg:ml-20 sm:ml-0 mt-5">
+                    <table class="table table-normal  text-lg w-full  text-blue-300  " >
                       <!-- head -->
-                      <thead>
-                        <tr>
-                          <th></th>
-                          <th>Name</th>
-                          <th>Surname</th>
-                          <th>Username</th>
-                          <th>Email</th>
-                          <th>Job</th>
-                          <th>Delete</th>
+                      <thead class="">
+                        <tr class="">
+                         
+                          <tr class="" >
+                            <td>Name</td>
+                            <td>Surname</td>
+                            <td>Username</td>
+                            <td>Email</td>
+                            <td></td>
+                          
+                          </tr>
                         </tr>
                       </thead>
-                      <tbody class="">
+                      <tbody class="z-0 ">
+                        @foreach($lawyer as $lawyer)
                         <!-- row 1 -->
-                        <tr class="">
-                          <th>1</th>
-                          <td>Cy Ganderton</td>
-                          <td>Quality Control Specialist</td>
-                          <td>Blue</td>
-                          <td>Pasul</td>
-                          <td>Pasul</td>
-                          <td>Pasul</td>
+                     
+                     
+                          <td>{{$lawyer->name}}</td>
+                          <td>{{$lawyer->surname}}</td>
+                          <td>{{$lawyer->username}}</td>
+                          <td>{{$lawyer->email}}</td>
+                          <td><label for="my-modal-delete-{{$lawyer->id}}" class="btn btn-circle btn-md"><i class="fas fa-trash text-error"></i></label></td>
                         </tr>
                         <!-- row 2 -->
-                        <tr >
-                          <th>2</th>
-                          <td>Hart Hagerty</td>
-                          <td>Desktop Support Technician</td>
-                          <td>Purple</td>
-                          <td>Pasul</td>
-                          <td>Pasul</td>
-                          <td>Pasul</td>
-                        </tr>
-                        <!-- row 3 -->
-                        <tr>
-                          <th>3</th>
-                          <td>Brice Swyre</td>
-                          <td>Tax Accountant</td>
-                          <td>Red</td>
-                          <td>Pasul</td>
-                          <td>Pasul</td>
-                          <td>Pasul</td>
-                        </tr>
-                         <!-- row 1 -->
-                         <tr class="">
-                            <th>1</th>
-                            <td>Cy Ganderton</td>
-                            <td>Quality Control Specialist</td>
-                            <td>Blue</td>
-                            <td>Pasul</td>
-                            <td>Pasul</td>
-                            <td>Pasul</td>
-                          </tr>
+                        @endforeach
+                    
                        
                       </tbody>
                     </table>

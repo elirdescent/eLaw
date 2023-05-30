@@ -5,33 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
      <link rel="icon" type="image/x-icon" href="/images/elaw.png">
-    <title>Login Lawyer</title>
+     <link rel="icon" type="image/x-icon" href="/images/elaw.png">
+     <title>Lawyer Login</title>
+   
+    
+    
+    
 @vite('resources/css/app.css')
     
 </head>
-<body>
 
-      <nav class="relative px-4 py-4 flex justify-center items-center bg-gray-700 transition duration-300 ease-in-out">
-     <nav class="flex-1 ">
-        <a href="{{URL('loginrole')}}"> <button class="inline-flex items-center px-4 py-2 bg-transparent hover:bg-gray-800 text-white text-sm font-medium rounded-full mx-2">
-	<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-	  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
-	</svg>
-    Back
-  </button></a>
-    </nav>
-        <a class="text-3xl font-bold leading-none" href="{{route('homepage')}}">
-          <img src="{{URL('images/elaw.png')}}" class="h-10 " alt="">
-       </a>
-       <a class="text-3xl font-bold leading-none" href="{{route('homepage')}}">
-         <img src="{{URL('images/legalboxteal.png')}}" class="h-10 ml-1 " alt="">
-      </a>    
-      </ul>
+<body class="">
+
      
-    </nav>
+
+
   <!--NAVBAR-->
+
+  <nav class="relative px-4 py-4 flex justify-center items-center bg- transition duration-300 ease-in-out">
+
+    <a class="text-3xl font-bold leading-none" href="{{route('homepage')}}">
+      <img src="{{URL('images/elaw.png')}}" class="h-10 " alt="">
+   </a>
+   <a class="text-3xl font-bold leading-none" href="{{route('homepage')}}">
+     <img src="{{URL('images/legalboxteal.png')}}" class="h-10 ml-1 " alt="">
+  </a>    
+  </ul>
+ 
+</nav>
   
     <!--FORM-->
+    
     <form action="{{route('loglawyer')}}" method="post">
         @csrf
         @if(Session::has('success'))
@@ -47,12 +51,13 @@
             <p>{{Session::get('fail')}}</p>
           </div>
           @endif
-    <div class="min-w-screen min-h-screen  flex items-center justify-center pb-20 px-5 py-5">
-        <div class="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden transition duration-300 hover:bg-blue-200  lg:flex-shrink-0 lg:flex lg:flex-col lg:justify-center lg:p-12" style="max-width:1000px">
+
+    <div class="min-w-screen min-h-screen bg-neutral flex items-center justify-center pb-20 px-5 py-5 ">
+        <div class="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden " style="max-width:1000px">
             <div class="md:flex w-full">
-                <div class="hidden md:block w-1/2 flex justify-center pt-28 pl-10 ">
+                <div class="hidden md:block w-1/2 flex justify-center pt-40 pl-10 ">
                   
-                  <img src="{{URL('images/login.png')}}" alt=""  class=" h-64 mx-auto transition duration-300 ease-in-out hover:transform hover:scale-110">
+                  <img src="{{URL('images/login.png')}}" alt="">
                   
                 </div>
                 <div class="w-full md:w-1/2 py-10 px-5 md:px-10 ">

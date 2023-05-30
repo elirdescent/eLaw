@@ -360,54 +360,60 @@
                   </a>
                 </div>
   
-                <!-- Links -->
-                <div class="flex-1 px-4 space-y-2 overflow-hidden hover:overflow-auto">
-                  <a href="#" class="flex items-center w-full space-x-2 text-white bg-blue-300 rounded-lg">
-                    <span aria-hidden="true" class="p-2 bg-blue-300 rounded-lg">
-                      <svg
-                        class="w-6 h-6"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                        />
-                      </svg>
-                    </span>
-                    <span>Home</span>
-                  </a>
-                  <a
-                    href="{{route('lawyertasks')}}"
-                    class="flex items-center space-x-2 text-blue-800 transition-colors rounded-lg group hover:bg-blue-300 hover:text-white"
+               
+               <!-- Links -->
+               <div class="flex-1 justify-start px-4 space-y-2 overflow-hidden hover:overflow-auto">
+                <a href="{{route('lawyercases')}}" class="flex items-center space-x-2 text-blue-800 transition-colors rounded-lg group hover:bg-blue-300 hover:text-white">
+                  <span aria-hidden="true" class="p-2 transition-colors rounded-lg group-hover:bg-blue-300 group-hover:text-white">
+                  <i class="fas fa-box  "></i>
+                  </span>
+                  <span class="">Cases</span>
+                </a>
+                <a
+                  href="{{route('lawyertasks')}}"
+                  class="flex items-center space-x-2 text-blue-800 transition-colors rounded-lg group hover:bg-blue-300 hover:text-white"
+                >
+                  <span
+                    aria-hidden="true"
+                    class="pl-2 pr-1 pt-2 pb-2 transition-colors rounded-lg group-hover:bg-blue-300 group-hover:text-white"
                   >
-                    <span
-                      aria-hidden="true"
-                      class="p-2 transition-colors rounded-lg group-hover:bg-blue-300 group-hover:text-white"
-                    >
-                      <svg
-                        class="w-6 h-6"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-                        />
-                      </svg>
-                    </span>
-                    <span>Tasks</span>
-                  </a>
-                </div>
-  
+                  <i class="fas fa-archive"></i>
+                 
+                  </span>
+                  <span class="m-0">Tasks</span>
+                </a>
+
+                <a
+                href="{{route('viewclients')}}"
+                class="flex items-center space-x-2 text-blue-800 transition-colors rounded-lg group hover:bg-blue-300 hover:text-white"
+              >
+                <span
+                  aria-hidden="true"
+                  class="pl-2 pr-1 pt-2 pb-2 transition-colors rounded-lg group-hover:bg-blue-300 group-hover:text-white"
+                >
+                <i class="fas fa-user"></i>
+               
+                </span>
+                <span class="m-0">Users</span>
+              </a>
+
+                <a
+                href="{{route('clientposts')}}"
+                class="flex items-center space-x-2 text-blue-800 transition-colors rounded-lg group hover:bg-blue-300 hover:text-white"
+              >
+                <span
+                  aria-hidden="true"
+                  class="pl-2 pr-1 pt-2 pb-2 transition-colors rounded-lg group-hover:bg-blue-300 group-hover:text-white"
+                >
+                <i class="fas fa-balance-scale"></i>
+               
+                </span>
+                <span class="m-0">Legal Issues</span>
+              </a>
+
+            
+
+              </div>
                
               </nav>
   

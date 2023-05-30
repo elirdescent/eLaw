@@ -10,6 +10,36 @@
 </head>
 
 
+@foreach($client as $cli)
+<!-- INFO MODAL -->
+<input type="checkbox" id="my-modal-view-{{$cli->id}}" class="modal-toggle" />
+<div class="modal">
+  <div class="modal-box">
+    <h1 class="flex justify-start   text-3xl font-extrabold text-gray-900 text-white md:text-3xl lg:text-3xl"><span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Name Surname</span></h1>
+    <div class="flex">
+      <h1 class="flex justify-start   text-md font-bold text-gray-900 text-white md:text-md lg:text-md"><span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">@</span></h1>
+      <h1 class="flex justify-start   text-md font-bold text-gray-900 text-white md:text-md lg:text-md"><span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">username</span></h1>
+    </div>
+
+    <div class="flex items-center mt-2">
+      <i class="fas fa-map-marker-alt mr-1 text-teal-300"></i>
+      <p class="text-sm font-bold">{{$cli->city}}, {{$cli->country}}</p>
+    </div>
+
+    <div class="flex items-center mt-2">
+      <i class="fas fa-briefcase mr-1 text-teal-300"></i>
+      <p class="text-sm font-bold">{{$cli->job}}</p>
+    </div>
+   
+    <p class="py-4">{{$cli->bio}}</p>
+    <div class="modal-action">
+      <label for="my-modal-view-{{$cli->id}}" class="btn">Close</label>
+    </div>
+  </div>
+</div>
+
+<!-- INFO MODAL -->
+@endforeach
 
 
 <body>
@@ -139,25 +169,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
                   </svg>
                 </button>
-                <!-- Messages button -->
-                <button
-                  @click="(isSidebarOpen && currentSidebarTab == 'messagesTab') ? isSidebarOpen = false : isSidebarOpen = true; currentSidebarTab = 'messagesTab'"
-                  class="p-2 transition-colors bg-blue-300 rounded-lg shadow-md  hover:text-blue-300 hover:bg-teal-300 duration-300  focus:outline-none focus:ring focus:ring-blue-300  focus:ring-offset-white focus:ring-offset-2"
-                  :class="(isSidebarOpen && currentSidebarTab == 'messagesTab') ? 'text-white bg-teal-300' : 'text-gray-500 '"
-                >
-                  <span class="sr-only">Toggle message panel</span>
-            
-                  
-                  <svg 
-                   aria-hidden="true"
-                  class="w-6 h-6"
-              
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="Edit / Add_Plus"> <path id="Vector" d="M6 12H12M12 12H18M12 12V18M12 12V6" stroke="#878787" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g> </g></svg>
-                 
-                 
-                </button>
+               
                 <!-- Notifications button -->
                
               </div>
@@ -232,53 +244,63 @@
                   </a>
                 </div>
   
-                <!-- Links -->
-                <div class="flex-1 px-4 space-y-2 overflow-hidden hover:overflow-auto">
-                  <a href="#" class="flex items-center w-full space-x-2 text-white bg-blue-300 rounded-lg">
-                    <span aria-hidden="true" class="p-2 bg-blue-300 rounded-lg">
-                      <svg
-                        class="w-6 h-6"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                        />
-                      </svg>
-                    </span>
-                    <span>Home</span>
-                  </a>
-                  <a
-                    href="{{route('lawyertasks')}}"
-                    class="flex items-center space-x-2 text-blue-800 transition-colors rounded-lg group hover:bg-blue-300 hover:text-white"
+               <!-- Links -->
+               <div class="flex-1 justify-start px-4 space-y-2 overflow-hidden hover:overflow-auto">
+                <a href="{{route('lawyercases')}}" class="flex items-center space-x-2 text-blue-800 transition-colors rounded-lg group hover:bg-blue-300 hover:text-white">
+                  <span aria-hidden="true" class="p-2 transition-colors rounded-lg group-hover:bg-blue-300 group-hover:text-white">
+                  <i class="fas fa-box  "></i>
+                  </span>
+                  <span class="">Cases</span>
+                </a>
+                <a
+                  href="{{route('lawyertasks')}}"
+                  class="flex items-center space-x-2 text-blue-800 transition-colors rounded-lg group hover:bg-blue-300 hover:text-white"
+                >
+                  <span
+                    aria-hidden="true"
+                    class="pl-2 pr-1 pt-2 pb-2 transition-colors rounded-lg group-hover:bg-blue-300 group-hover:text-white"
                   >
-                    <span
-                      aria-hidden="true"
-                      class="p-2 transition-colors rounded-lg group-hover:bg-blue-300 group-hover:text-white"
-                    >
-                      <svg
-                        class="w-6 h-6"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-                        />
-                      </svg>
-                    </span>
-                    <span>Tasks</span>
-                  </a>
-                </div>
+                  <i class="fas fa-archive"></i>
+                 
+                  </span>
+                  <span class="m-0">Tasks</span>
+                </a>
+
+                <a
+                href="{{route('viewclients')}}"
+                class="flex items-center space-x-2 text-blue-800 transition-colors rounded-lg group hover:bg-blue-300 hover:text-white"
+              >
+                <span
+                  aria-hidden="true"
+                  class="pl-2 pr-1 pt-2 pb-2 transition-colors rounded-lg group-hover:bg-blue-300 group-hover:text-white"
+                >
+                <i class="fas fa-user"></i>
+               
+                </span>
+                <span class="m-0">Users</span>
+              </a>
+
+                <a
+                href="{{route('clientposts')}}"
+                class="flex items-center space-x-2 text-blue-800 transition-colors rounded-lg group hover:bg-blue-300 hover:text-white"
+              >
+                <span
+                  aria-hidden="true"
+                  class="pl-2 pr-1 pt-2 pb-2 transition-colors rounded-lg group-hover:bg-blue-300 group-hover:text-white"
+                >
+                <i class="fas fa-balance-scale"></i>
+               
+                </span>
+                <span class="m-0">Legal Issues</span>
+              </a>
+
+            
+
+              </div>
+
+              
+              
+
   
                
               </nav>
@@ -346,7 +368,7 @@
               
  
                 </form>
-           <!-- ADD A CASE --
+           <!-- ADD A CASE -->
               </section>
   
               <section x-show="currentSidebarTab == 'notificationsTab'" class="px-4 py-6">
@@ -474,7 +496,7 @@
               </div>
             </header>
 
-            <h1 class="flex justify-start ml-20 mb-5 text-6xl font-extrabold text-gray-900 text-white md:text-5xl lg:text-6xl"><span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Users</span></h1>
+            <h1 class="flex justify-start   ml-28 mb-5 text-6xl font-extrabold text-gray-900 text-white md:text-5xl lg:text-6xl"><span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Users</span></h1>
             
   
             <div class="flex flex-2">
@@ -490,45 +512,44 @@
 
 <div class=" ">
     
-<div class="flex ml-20 lg:ml-20 sm:m-0 grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 xl:grid-cols-4 gap-4">
+<div class="flex  lg:ml-20 sm:m-0 grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 xl:grid-cols-4 gap-4">
 
     
 
-
+@foreach($client as $cli)
     <!-- USER CARD -->
-    <div class="flex flex-col items-center justify-center bg-neutral-700 p-4 shadow-xl rounded-lg ">
+    <div class="flex w-full px-20 flex-col items-center justify-center bg-neutral-700 p-4 shadow-xl rounded-lg ">
         <div class="inline-flex   overflow-hidden h-40 w-40">
-            <img src="{{URL('images/usericon.png')}}"
+            <img src="{{URL('images/useravatar.png')}}"
                  alt=""
-                 class="ml-3 h-32 border-none">
+                 class="ml-3 h-32 border-none rounded-full">
         </div>
 
-        <h2 class="mt-4 font-bold text-xl text-blue-300">Sebastian Bennett</h2>
-        <h6 class="mt-2 text-sm font-medium text-teal-300">Founder</h6>
+        <h2 class="mt-4 font-bold text-xl text-blue-300">{{$cli->name}} {{$cli->surname}}</h2>
+        <div class="flex items-center mt-2">
+          <i class="fas fa-briefcase mr-1 text-teal-300"></i>
+          <p class="text-sm font-semibold text-blue-300">{{$cli->job}}</p>
+        </div>
 
-        <p class="text-s text-gray-500 text-center mt-3 text-white">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab enim molestiae nulla.
-        </p>
+        <div class="flex  items-center justify-center mt-2">
+          
+          <p class="text-center text-gray-300">{{Str::limit($cli->bio,'30')}}</p>
+        </div>
+
+        
 
         <div class="flex  justify-around mt-4 space-x-6">
 
             <div>
-                <a href="" class="btn btn-circle flex items-center justify-center  border rounded-full text-gray-800 border-gray-800">
-                    <i class="fas fa-info text-blue-300"></i>
-                </a>
+
+              <label for="my-modal-view-{{$cli->id}}" class="btn"> <i class="fas fa-info text-blue-300"></i> <p class="ml-2 text-blue-300">INFO</p></label>
+               
             </div>
 
-            <div>
-                <a href="" class="btn btn-circle flex items-center justify-center  border rounded-full text-gray-800 border-gray-800">
-                    <i class="fas fa-trash text-blue-300"></i>
-                </a>
-            </div>
+            
 
-            <div>
-                <a href="" class="btn btn-circle flex items-center justify-center  border rounded-full text-gray-800 border-gray-800">
-                    <i class="fas fa-edit text-blue-300"></i>
-                </a>
-            </div>
+      
+
             
            
                
@@ -537,47 +558,7 @@
 
      <!-- USER CARD -->
 
-       <!-- USER CARD -->
-    <div class="flex flex-col items-center justify-center bg-neutral-700 p-4 shadow-xl rounded-lg ">
-        <div class="inline-flex   overflow-hidden h-40  w-40">
-            <img src="{{URL('images/usericon.png')}}"
-                 alt=""
-                 class="ml-3 h-32 border-none">
-        </div>
-
-        <h2 class="mt-4 font-bold text-xl text-blue-300">Sebastian Bennett</h2>
-        <h6 class="mt-2 text-sm font-medium text-teal-300">Founder</h6>
-
-        <p class="text-s text-gray-500 text-center mt-3 text-white">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab enim molestiae nulla.
-        </p>
-
-        <div class="flex  justify-around mt-4 space-x-6">
-
-            <div>
-                <a href="" class="btn btn-circle flex items-center justify-center  border rounded-full text-gray-800 border-gray-800">
-                    <i class="fas fa-info text-blue-300"></i>
-                </a>
-            </div>
-
-            <div>
-                <a href="" class="btn btn-circle flex items-center justify-center  border rounded-full text-gray-800 border-gray-800">
-                    <i class="fas fa-trash text-blue-300"></i>
-                </a>
-            </div>
-
-            <div>
-                <a href="" class="btn btn-circle flex items-center justify-center  border rounded-full text-gray-800 border-gray-800">
-                    <i class="fas fa-edit text-blue-300"></i>
-                </a>
-            </div>
-            
-           
-               
-        </div>
-    </div>
-
-     <!-- USER CARD -->
+     @endforeach
 
 
     

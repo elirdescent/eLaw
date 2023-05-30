@@ -9,6 +9,8 @@
 </head>
 <body>
     <!--NAVBAR-->
+    
+    
         <nav class="relative px-4 py-4 flex justify-between items-center bg-gray-700 transition duration-300 ease-in-out">
             <a class="text-3xl font-bold leading-none" href="#">
                <img src="{{URL('images/elaw.png')}}" class="h-10 " alt="">
@@ -24,7 +26,8 @@
                     </svg>
                 </button>
             </div>
-            <ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6 transition duration-300 ease-in-out">    
+            <ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6 transition duration-300 ease-in-out">
+                
             </ul>
             <a href="{{URL('loginrole')}}"class="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold  rounded-xl transition duration-200" >Sign In</a>
             <a href="{{URL('role')}}" class="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200" >Sign up</a>
@@ -74,63 +77,27 @@
                 </div>
             </nav>
         </div>
-    </div>
-    <script>
-    // Burger menus
-    document.addEventListener('DOMContentLoaded', function() {
-        // open
-        const burger = document.querySelectorAll('.navbar-burger');
-        const menu = document.querySelectorAll('.navbar-menu');
-    
-        if (burger.length && menu.length) {
-            for (var i = 0; i < burger.length; i++) {
-                burger[i].addEventListener('click', function() {
-                    for (var j = 0; j < menu.length; j++) {
-                        menu[j].classList.toggle('hidden');
-                    }
-                });
-            }
-        }
-    
-        // close
-        const close = document.querySelectorAll('.navbar-close');
-        const backdrop = document.querySelectorAll('.navbar-backdrop');
-    
-        if (close.length) {
-            for (var i = 0; i < close.length; i++) {
-                close[i].addEventListener('click', function() {
-                    for (var j = 0; j < menu.length; j++) {
-                        menu[j].classList.toggle('hidden');
-                    }
-                });
-            }
-        }
-    
-        if (backdrop.length) {
-            for (var i = 0; i < backdrop.length; i++) {
-                backdrop[i].addEventListener('click', function() {
-                    for (var j = 0; j < menu.length; j++) {
-                        menu[j].classList.toggle('hidden');
-                    }
-                });
-            }
-        }
-    });
 
-    </script>
+    </div>
+    
+   
       <!--NAVBAR-->
 
       <!--CARD-->
       <div class="firstrow flex flex-row  pt-10 ">  
-      <div class="container mx-auto  justify-content-start"> 
+         
+
+      <div class="container mx-auto  justify-content-start">
+
+        
         <div class="relative px-4 mx-auto max-w-7xl sm:px-6 lg:px-8" style="cursor: auto;">
           <div class="max-w-lg mx-auto overflow-hidden rounded-lg shadow-lg lg:max-w-none lg:flex">
             <div class="flex-1 px-6 py-8 bg-blue-200 lg:p-12" style="cursor: auto;">
               <h3 class="text-2xl font-extrabold text-gray-900 sm:text-3xl" style="cursor: auto;">Justice Served</h3>
-              <p class="mt-6 text-base text-gray-500">Metus potenti velit sollicitudin porttitor magnis elit lacinia tempor varius, ut cras orci vitae parturient id nisi vulputate consectetur, primis venenatis cursus tristique malesuada viverra congue risus. Class dui ut ullamcorper ultrices arcu ad varius adipiscing, aliquet imperdiet hendrerit orci fusce ante felis, mi mus vel finibus viverra nibh taciti.</p>
+              <p class="mt-6 text-base text-gray-500">At Legalbox, we offer services for both Legal Professionals and Clients to have a centralized workspace where they can find opportunites to help each other in various legal issues.</p>
               <div class="mt-8">
                 <div class="flex items-center">
-                  <h4 class="flex-shrink-0 pr-4 text-sm font-semibold tracking-wider text-indigo-600 uppercase ">What's included</h4>
+                  <h4 class="flex-shrink-0 pr-4 text-sm font-semibold tracking-wider text-blue-800 uppercase ">What's included</h4>
                   <div class="flex-1 border-t-2 border-gray-200"></div>
                 </div>
                 <ul class="mt-8 space-y-5 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:gap-y-5">
@@ -156,7 +123,7 @@
                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                       </svg>
                     </div>
-                    <p class="ml-3 text-sm text-gray-700">Easy</p>
+                    <p class="ml-3 text-sm text-gray-700">User-friendly</p>
                   </li>
                   <li class="flex items-start lg:col-span-1">
                     <div class="flex-shrink-0">
@@ -164,7 +131,7 @@
                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                       </svg>
                     </div>
-                    <p class="ml-3 text-sm text-gray-700">Personal license</p>
+                    <p class="ml-3 text-sm text-gray-700">Mobile-friendly</p>
                   </li>
                   <li class="flex items-start lg:col-span-1">
                     <div class="flex-shrink-0">
@@ -172,7 +139,7 @@
                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                       </svg>
                     </div>
-                    <p class="ml-3 text-sm text-gray-700">Additional SaaS resources</p>
+                    <p class="ml-3 text-sm text-gray-700">Social space</p>
                   </li>
                   <li class="flex items-start lg:col-span-1">
                     <div class="flex-shrink-0">
@@ -180,11 +147,13 @@
                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                       </svg>
                     </div>
-                    <p class="ml-3 text-sm text-gray-700">Email support</p>
+                    <p class="ml-3 text-sm text-gray-700">Service transparency</p>
                   </li>
                 </ul>
-                <div class="stats mt-20 ">
-                    <div class="stats stats-vertical lg:stats-horizontal bg-blue-200 text-gray-800 border-none ">
+
+
+                <div class="stats mt-20  ">
+                    <div class="stats stats-vertical lg:stats-horizontal bg-blue-300 border border-solid border-blue-300 text-gray-800  ">
   
                         <div class="stat border-none ">
                           <div class="stat-title text-gray-800">Downloads</div>
@@ -202,11 +171,17 @@
                           <div class="stat-title text-gray-800">New Registers</div>
                           <div class="stat-value">1,200</div>
                           <div class="stat-desc text-gray-800">↘︎ 90 (14%)</div>
-                        </div>   
+                        </div>
+                        
                       </div>
                 </div>
+
+
               </div>
             </div>
+
+           
+            
             <div class="px-6 py-8 text-center bg-gray-100 lg:flex-shrink-0 lg:flex lg:flex-col lg:justify-center lg:p-12" style="cursor: auto;">
                 <div class="joinus mt-20">
                     <img src="{{URL('images/lawyers.png')}}" alt="lawyers" class=" h-64 mx-auto">
@@ -216,34 +191,38 @@
                   </div>
                   <div class="mt-6">
                     <div class="rounded-md shadow">
-                      <a href="https://stackdiary.com/" class="flex items-center justify-center w-full px-5 py-3 text-base font-medium text-white bg-gray-800 border border-transparent rounded-md hover:bg-gray-900" target="_blank">Get Access</a>
+                      <a href="{{URL('role')}}" class="flex items-center justify-center w-full px-5 py-3 text-base font-medium text-white transition transition-duration-300 ease-in-out bg-gray-800 border border-transparent rounded-md hover:bg-gray-900" target="_blank">Sign Up</a>
                     </div>
                   </div>
                   <div class="mt-4 text-sm">
-                    <a href="https://stackdiary.com/" class="font-medium text-gray-700 hover:text-gray-900" target="_blank">Or pick a 
-                      <span class="font-bold">lifetime</span> plan
+                    <a href="{{URL('loginrole')}}" class="font-medium text-gray-700 hover:text-gray-900" target="_blank">Or sign back into
+                      <span class="font-bold">your account</span>.
                     </a>
                   </div></div>
+              
+              
             </div>
           </div>
         </div>
         </div>
         </div>
+    
+   
     </div>
     <!--CARD-->
 
 
      <!--REVIEWS-->
+
     <div class="reviews mt-20 mb-20 ml-10 mr-10">
         <section class="text-neutral-700 dark:text-neutral-300">
             <div class="mx-auto text-center md:max-w-4xl lg:max-w-6xl">
               <h3 class="mb-6 text-3xl font-bold ">Testimonials</h3>
               <p class="mb-6 pb-2 md:mb-12 md:pb-0">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit,
-                error amet numquam iure provident voluptate esse quasi, veritatis
-                totam voluptas nostrum quisquam eum porro a pariatur veniam.
+               See what some of the users of our web application have to say about our services and their experience with us.
               </p>
             </div>
+          
             <!--First Testimonial-->
             <div class="grid gap-6 text-center md:grid-cols-3">
               <div>
@@ -256,7 +235,8 @@
                       src="https://tecdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp" />
                   </div>
                   <div class="p-6">
-                    <h4 class="mb-4 text-2xl font-semibold">Maria Smantha</h4>
+                    <h4 class=" text-2xl font-semibold">Maria Smantha</h4>
+                    <h4 class="mb-4 text-l font-semibold text-blue-300">Lawyer</h4>
                     <hr />
                     <p class="mt-4">
                       <svg
@@ -267,12 +247,12 @@
                         <path
                           d="M13 14.725c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275zm-13 0c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275z" />
                       </svg>
-                      Lorem ipsum dolor sit amet eos adipisci, consectetur
-                      adipisicing elit.
+                     A must-have for every busy legal professional out there for quick and easy task management.
                     </p>
                   </div>
                 </div>
               </div>
+          
               <!--Second Testimonial-->
               <div>
                 <div
@@ -284,7 +264,8 @@
                       src="https://tecdn.b-cdn.net/img/Photos/Avatars/img%20(2).webp" />
                   </div>
                   <div class="p-6">
-                    <h4 class="mb-4 text-2xl font-semibold">Lisa Cudrow</h4>
+                    <h4 class="text-2xl font-semibold">Lisa Cudrow</h4>
+                    <h4 class="mb-4 text-l font-semibold text-blue-300">Lawyer</h4>
                     <hr />
                     <p class="mt-4">
                       <svg
@@ -295,12 +276,12 @@
                         <path
                           d="M13 14.725c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275zm-13 0c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275z" />
                       </svg>
-                      Neque cupiditate assumenda in maiores repudi mollitia
-                      architecto.
+                     If you're looking for managing your work everywhere and anytime, Legalbox is your solution.
                     </p>
                   </div>
                 </div>
               </div>
+          
               <!--Third Testimonial-->
               <div>
                 <div
@@ -312,7 +293,8 @@
                       src="https://tecdn.b-cdn.net/img/Photos/Avatars/img%20(9).webp" />
                   </div>
                   <div class="p-6">
-                    <h4 class="mb-4 text-2xl font-semibold">John Smith</h4>
+                    <h4 class=" text-2xl font-semibold">John Smith</h4>
+                    <h4 class="mb-4 text-l font-semibold text-blue-300">Client</h4>
                     <hr />
                     <p class="mt-4">
                       <svg
@@ -323,23 +305,38 @@
                         <path
                           d="M13 14.725c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275zm-13 0c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275z" />
                       </svg>
-                      Delectus impedit saepe officiis ab aliquam repellat rem unde
-                      ducimus.
+                      Legalbox is the perfect place to find solutions for legal issues quickly and efficiently.
                     </p>
                   </div>
                 </div>
               </div>
             </div>
           </section>
+    
     </div>
+
       <!--REVIEWS-->
 
     <!--FOOTER-->
-   <footer class="footer footer-center p-4 bg-base-300 text-base-content">
-  <div>
-    <p>Copyright © 2023 - All right reserved LegalBox</p>
-  </div>
-</footer>
-      <!--FOOTER-->   
+    <footer class="footer justify-center  p-10 bg-gray-700 text-base-content ">
+        <div>
+            <img src="{{URL('images/elaw.png')}}" class="h-20 pl-6 " alt="">
+            <img src="{{URL('images/legalboxteal.png')}}" class="h-10 " alt="">
+        </div> 
+
+        
+       
+      
+       
+      </footer>
+
+      <!--FOOTER-->
+      
+
+
+   
+
+  
+    
 </body>
 </html>
